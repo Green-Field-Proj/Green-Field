@@ -5,3 +5,5 @@ const {} = require("../controllers");
 Router.post("/signup", userSignup);
 
 module.exports = Router;
+
+console.log("hello world");
