@@ -1,5 +1,5 @@
 // controllers/cartController.js
-const Cart = require("../models/cartModel");
+const Cart = require("../models/cart.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {

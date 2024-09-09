@@ -1,5 +1,5 @@
 // controllers/reviewController.js
-const Review = require("../models/reviewModel");
+const Review = require("../models/review.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {

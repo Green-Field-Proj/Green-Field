@@ -1,5 +1,5 @@
 // import your Models Here
-const { User } = require("../models");
+const { User } = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 const bcrypt = require("bcrypt");
