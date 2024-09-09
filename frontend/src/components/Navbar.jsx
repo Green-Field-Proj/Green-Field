@@ -5,7 +5,8 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/signin-signup">Signin</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Signup</Link>
     </nav>
   );
 }

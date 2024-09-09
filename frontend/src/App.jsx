@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import "../style/App.css";
+import React from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Signin_Signup from "./components/Login&SignUp/Signin_Signup.jsx";
+import Login from "./components/Login.jsx";
+import SignUp from "./components/SignUp.jsx";
 import Home from "./components/Home.jsx";
+import TopHeader from "./components/TopHeader.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 const App = () => {
   return (
     <>
+      <TopHeader />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signin-signup" element={<Signin_Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
+      <Footer />
     </>
   );
 };
