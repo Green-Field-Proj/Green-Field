@@ -2,7 +2,7 @@
 const sequelize = require('../config/index.js');
 const { DataTypes } = require('sequelize');
 
-// Importer les modèles
+
 const User = require('./user.model');
 const Product = require('./product.model');
 const Review = require('./review.model');
@@ -10,7 +10,7 @@ const Order = require('./order.model');
 const Category = require('./category.model');
 const Cart = require('./cart.model');
 
-// Définir les associations
+//  associations
 // User <--> Review
 User.hasMany(Review, { as: 'reviews', foreignKey: 'userId' });
 Review.belongsTo(User, { as: 'user', foreignKey: 'userId' });
