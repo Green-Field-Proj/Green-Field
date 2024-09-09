@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../config"); // Ensure this points to your Sequelize instance
 
 const Product = sequelize.define("Product", {
   name: {
