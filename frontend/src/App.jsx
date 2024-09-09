@@ -1,29 +1,24 @@
-import React, { useState } from "react";
-import "../style/App.css";
-import SignUpForm from "../src/Login&SignUp/loginform.jsx";
-import SignInForm from "../src/Login&SignUp/signupform.jsx";
-import TogglePanel from "../src/Login&SignUp/Toggle.jsx";
-
+import React from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Login from "./components/Login.jsx";
+import SignUp from "./components/SignUp.jsx";
+import Home from "./components/Home.jsx";
+import TopHeader from "./components/TopHeader.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 const App = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleRegisterClick = () => {
-    setIsActive(true);
-  };
-
-  const handleLoginClick = () => {
-    setIsActive(false);
-  };
-
   return (
-    <div className={`container ${isActive ? "active" : ""}`} id="container">
-      <SignUpForm />
-      <SignInForm />
-      <TogglePanel
-        onRegisterClick={handleRegisterClick}
-        onLoginClick={handleLoginClick}
-      />
-    </div>
+    <>
+      <TopHeader />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      <Footer />
+    </>
   );
 };
 
