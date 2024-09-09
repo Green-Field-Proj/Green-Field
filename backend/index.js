@@ -1,5 +1,5 @@
 const express = require("express");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const userRouter = require("./routers/UserRouter");
 const ProductsRouter = require("./routers/ProductsRoutes");
 const orderRoutes = require("./routers/orderRoutes");
@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use("/api", ProductsRouter);
 app.use("/api/user", userRouter);
 app.use("/api/orders", orderRoutes);
