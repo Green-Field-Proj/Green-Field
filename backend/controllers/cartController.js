@@ -7,7 +7,7 @@ module.exports = {
   addToCart: async (req, res) => {
     try {
       const { userId, productId, quantity } = req.body;
-      const [cartItem, created] = await Cart.upsert({
+      const [cartItem, created] = await Cart.create({
         userId,
         productId,
         quantity,
