@@ -40,14 +40,14 @@ Product.hasMany(Cart, { as: 'carts', foreignKey: 'productId' });
 Cart.belongsTo(Product, { as: 'product', foreignKey: 'productId' });
 
 
-sequelize
-  .sync({ force: true })
-  .then(() => {
-    console.log("All models were synchronized successfully.");
-  })
-  .catch((error) => {
-    console.error("Error synchronizing models:", error);
-  });
+// sequelize
+//   .sync({ force: true })
+//   .then(() => {
+//     console.log("All models were synchronized successfully.");
+//   })
+//   .catch((error) => {
+//     console.error("Error synchronizing models:", error);
+//   });
 
 
 
