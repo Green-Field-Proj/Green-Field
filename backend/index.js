@@ -1,10 +1,13 @@
 const express = require("express");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
+
 const userRouter = require("./routers/UserRouter");
-const ProductsRouter = require("./routers/ProductsRoutes");
-const orderRoutes = require("./routers/orderRoutes");
-const reviewRoutes = require("./routers/reviewRouter");
-const cartRoutes = require("./routers/cartRouter");
+const ProductsRouter = require("./routers/ProductRouter");
+const orderRouter = require("./routers/orderRouter");
+const reviewRouter = require("./routers/reviewRouter");
+const cartRouter = require("./routers/cartRouter");
+const categoryRouter = require("./routers/categoryRouter");
+
 require("dotenv").config();
 require("./config");
 require("./models");
@@ -17,12 +20,15 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-// app.use(cookieParser());
-app.use("/api", ProductsRouter);
+app.use(cookieParser());
+
+app.use("/api/product", ProductsRouter);
 app.use("/api/user", userRouter);
-app.use("/api/orders", orderRoutes);
-app.use("/api/reviews", reviewRoutes);
-app.use("/api/cart", cartRoutes);
+app.use("/api/order", orderRouter);
+app.use("/api/review", reviewRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/category",categoryRouter)
+
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port  http://localhost:${port}`);
