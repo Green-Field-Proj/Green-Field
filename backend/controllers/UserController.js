@@ -1,5 +1,5 @@
 // import your Models Here
-const { User } = require("../models/user.model");
+const  User  = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 const bcrypt = require("bcrypt");
@@ -8,9 +8,9 @@ require("dotenv").config();
 module.exports = {
   userSignup: async (req, res) => {
     try {
-      const { name, email, password, role, profileImage } = req.body;
+      const { username, email, password, role, profileImage } = req.body;
       // Input validation
-      if (!name || !email || !password || !role) {
+      if (!username || !email || !password || !role) {
         return res.status(400).json({ message: "All fields are required" });
       }
 
@@ -34,7 +34,7 @@ module.exports = {
       }
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       await User.create({
-        name,
+        username,
         email,
         password: hashedPassword,
         role,
