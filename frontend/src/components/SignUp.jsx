@@ -26,7 +26,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/user/signup",
+        "http://localhost:3000/api/user/register",
         formData
       );
       setSuccessMessage("Sign up successful! Redirecting to login...");
