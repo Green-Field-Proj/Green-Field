@@ -74,7 +74,7 @@ module.exports = {
   },
   getAllUsers: async (req, res) => {
     try {
-      const users = await User.findAll({ include:[ Product,Category,Review,Order,Cart]});
+      const users = await User.findAll({});
       res.status(200).send(users);
     } catch (error) {
       console.error(error);
@@ -84,11 +84,10 @@ module.exports = {
   getUserById: async (req, res) => {
     try {
       const user = await User.findOne({
-        where : {
-            id : req.params.id
+        where: {
+          id: req.params.id,
         },
-        include:[ Product,Category,Review,Order,Cart]
-    });
+      });
       if (user) {
         res.status(200).send(user);
       } else {
@@ -102,11 +101,11 @@ module.exports = {
   getUserByName: async (req, res) => {
     try {
       const user = await User.findOne({
-        where : {
-            username : req.params.username
+        where: {
+          username: req.params.username,
         },
-        include:[ Product,Category,Review,Order,Cart]
-    });
+        include: [Product, Category, Review, Order, Cart],
+      });
       if (user) {
         res.status(200).send(user);
       } else {
