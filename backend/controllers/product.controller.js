@@ -1,11 +1,15 @@
 // import your Models Here
 const Product = require("../models/product.model");
+const Review = require("../models/review.model");
+const Order = require("../models/order.model");
+const Category = require("../models/category.model");
+const Cart = require("../models/cart.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {
   getAllProducts: async (req, res) => {
     try {
-      const product = await Product.findAll();
+      const product = await Product.findAll({ include:[Category,Review,Order,Cart]});
       res.status(200).send(product);
     } catch (error) {
       console.error(error);
@@ -24,11 +28,34 @@ module.exports = {
   },
   getProductById: async (req, res) => {
     try {
-      const product = await Product.findByPk(req.params.id);
+      const product = await Product.findOne({
+        where : {
+            id : req.params.id
+        },
+        include:[Category,Review,Order,Cart]
+    });
       if (product) {
         res.status(200).send(product);
       } else {
-        res.status(404).send("Product not found");
+        res.status(404).send("product not found");
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal server error");
+    }
+  },
+  getProductByName: async (req, res) => {
+    try {
+      const product = await Product.findOne({
+        where : {
+            name : req.params.name
+        },
+        include:[Category,Review,Order,Cart]
+    });
+      if (product) {
+        res.status(200).send(product);
+      } else {
+        res.status(404).send("product not found");
       }
     } catch (error) {
       console.error(error);

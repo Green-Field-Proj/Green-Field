@@ -1,16 +1,18 @@
 // Import your Models Here
 const Order = require("../models/order.model");
+const User = require("../models/user.model");
+const Product = require("../models/product.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {
-  // Create a new order
-  createOrder: async (req, res) => {
+  
+  addOrder: async (req, res) => {
     try {
-      const { userId, status, totalAmount } = req.body;
+      const { userId, paymentStatus, totalPrice } = req.body;
       const newOrder = await Order.create({
         userId,
-        status,
-        totalAmount,
+        paymentStatus,
+        totalPrice,
       });
       return res.status(201).json(newOrder);
     } catch (error) {
@@ -18,22 +20,25 @@ module.exports = {
     }
   },
 
-  // Get all orders
+
   getAllOrders: async (req, res) => {
     try {
-      const orders = await Order.findAll();
+      const orders = await Order.findAll({ include:[User,Product]});
       return res.status(200).json(orders);
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
   },
 
-  // Get a single order by ID
+ 
   getOrderById: async (req, res) => {
     try {
-      const { id } = req.params;
-
-      const order = await Order.findByPk(id);
+      const order = await Order.findOne({
+        where : {
+            id : req.params.id
+        },
+        include:[User,Product]
+    });
 
       if (!order) {
         return res.status(404).json({ message: "Order not found" });
@@ -45,17 +50,17 @@ module.exports = {
     }
   },
 
-  // Update an order by ID
+
   updateOrder: async (req, res) => {
     try {
       const { id } = req.params;
-      const { status, totalAmount } = req.body;
+      const { paymentStatus, totalPrice } = req.body;
       const order = await Order.findByPk(id);
       if (!order) {
         return res.status(404).json({ message: "Order not found" });
       }
-      order.status = status || order.status;
-      order.totalAmount = totalAmount || order.totalAmount;
+      order.paymentStatus = paymentStatus || order.paymentStatus;
+      order.totalPrice = totalPrice || order.totalPrice;
       await order.save();
       return res.status(200).json(order);
     } catch (error) {
@@ -63,7 +68,7 @@ module.exports = {
     }
   },
 
-  // Delete an order by ID
+  
   deleteOrder: async (req, res) => {
     try {
       const { id } = req.params;

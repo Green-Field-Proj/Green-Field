@@ -1,10 +1,12 @@
 // controllers/reviewController.js
 const Review = require("../models/review.model");
+const User = require("../models/user.model");
+const Product = require("../models/product.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {
-  // Create a review
-  createReview: async (req, res) => {
+  
+  addReview: async (req, res) => {
     try {
       const { rating, comment, userId, productId } = req.body;
       const newReview = await Review.create({
@@ -19,20 +21,25 @@ module.exports = {
     }
   },
 
-  // Get all reviews
+  
   getAllReviews: async (req, res) => {
     try {
-      const reviews = await Review.findAll();
+      const reviews = await Review.findAll({ include:[User,Product]});
       res.status(200).json(reviews);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
   },
 
-  // Get a review by ID
+  
   getReviewById: async (req, res) => {
     try {
-      const review = await Review.findByPk(req.params.id);
+      const review = await Review.findOne({
+        where : {
+            id : req.params.id
+        },
+        include:[User,Product]
+    });
       if (!review) {
         return res.status(404).json({ message: "Review not found" });
       }
@@ -42,7 +49,7 @@ module.exports = {
     }
   },
 
-  // Update a review
+  
   updateReview: async (req, res) => {
     try {
       const review = await Review.findByPk(req.params.id);
@@ -57,7 +64,7 @@ module.exports = {
     }
   },
 
-  // Delete a review
+
   deleteReview: async (req, res) => {
     try {
       const review = await Review.findByPk(req.params.id);
