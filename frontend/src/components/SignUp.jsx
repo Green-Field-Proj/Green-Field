@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import { Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import signuplogin from "../images/signuplogin.png"
+import '@fontsource/roboto/400.css'; 
+import '@fontsource/roboto/700.css'; 
+
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -41,49 +47,55 @@ function SignUp() {
   };
 
   return (
+    <div className="full-signup">
+    <div className="image-container">
+    <img src={signuplogin} alt="" />
+    </div>
+
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h2>Create an account</h2>
+      <h3>Enter your details below</h3>
       {successMessage && (
         <p className="message success-message">{successMessage}</p>
       )}
       {errorMessage && <p className="message error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
+      <div>
+          <TextField
             id="username"
-            name="username"
+            name="username" 
+            label="Name"
+            variant="standard"
+            fullWidth
             value={formData.username}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
+          <TextField
             id="email"
-            name="email"
+            name="email" 
+            label="Email"
+            variant="standard"
+            fullWidth
             value={formData.email}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
+          <TextField
             id="password"
-            name="password"
+            name="password" 
+            label="Password"
+            type="password" 
+            variant="standard"
+            fullWidth
             value={formData.password}
             onChange={handleChange}
-            required
           />
         </div>
-        <div>
-          <label htmlFor="role">Role:</label>
-          <select
+         <div id="roleDiv">
+          {/* <select
             id="role"
             name="role"
             value={formData.role}
@@ -92,7 +104,22 @@ function SignUp() {
           >
             <option value="client">Client</option>
             <option value="seller">Seller</option>
-          </select>
+          </select> */}
+
+<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <InputLabel id="roleLabel">Role</InputLabel>
+      <Select
+        labelId="role"
+        name="role"
+        id="role"
+        value={formData.role}
+        label="role"
+        onChange={handleChange}
+      >
+        <MenuItem value='client'>Client</MenuItem>
+        <MenuItem value='seller'>Seller</MenuItem>
+          </Select>
+    </FormControl>
         </div>
         <div>
           <label htmlFor="imageUrl">Profile Image URL:</label>
@@ -103,9 +130,12 @@ function SignUp() {
             value={formData.imageUrl}
             onChange={handleChange}
           />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
+        </div> 
+       <Button variant="contained" type="submit" disableElevation>Create Account</Button>
+       
+      </form><br/>
+      <p className="haveAccount">Already have account?<p className="haveAccount" id="haveAccountLogIn" onClick={()=>{navigate("/login")}}>Log in</p></p>
+    </div>
     </div>
   );
 }

@@ -1,4 +1,11 @@
 import React from "react";
+import qrcode from "../images/qrcode.webp"
+import appstore from "../images/appstore.png"
+import facebook from "../images/facebook.png"
+import googleplay from "../images/googleplay.webp"
+import instagram from "../images/instagram.png"
+import linkedin from "../images/linkedin.png"
+import twitter from "../images/twitter.png"
 
 const Footer = () => {
   return (
@@ -66,18 +73,18 @@ const Footer = () => {
             <p>Save $3 with App New User Only</p>
             <div className="app-stores">
               <img
-                src="/path-to-qr-code.png"
+                src={qrcode}
                 alt="QR Code"
                 className="w-24 h-24"
               />
               <div className="flex flex-col space-y-2">
                 <img
-                  src="/path-to-google-play.png"
+                  src={googleplay}
                   alt="Google Play"
                   className="h-10"
                 />
                 <img
-                  src="/path-to-app-store.png"
+                  src={appstore}
                   alt="App Store"
                   className="h-10"
                 />
@@ -85,22 +92,22 @@ const Footer = () => {
             </div>
             <div className="social-icons">
               <img
-                src="/path-to-facebook-icon.png"
+                src={facebook}
                 alt="Facebook"
                 className="w-6 h-6"
               />
               <img
-                src="/path-to-twitter-icon.png"
+                src={twitter}
                 alt="Twitter"
                 className="w-6 h-6"
               />
               <img
-                src="/path-to-instagram-icon.png"
+                src={instagram}
                 alt="Instagram"
                 className="w-6 h-6"
               />
               <img
-                src="/path-to-linkedin-icon.png"
+                src={linkedin}
                 alt="LinkedIn"
                 className="w-6 h-6"
               />
