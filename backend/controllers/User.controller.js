@@ -67,7 +67,7 @@ module.exports = {
         { expiresIn: "1h" }
       );
       res.cookie("token", token, { httpOnly: true });
-      res.status(200).json({ message: "Login successful" });
+      res.status(200).json({ message: "Login successful", role: user.role });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

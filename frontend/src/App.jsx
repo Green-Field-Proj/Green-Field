@@ -7,6 +7,9 @@ import Home from "./components/Home.jsx";
 import TopHeader from "./components/TopHeader.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import ContactUs from "./components/ContactUs.jsx";
+import OurStory from "./components/OurStory.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 const App = () => {
   return (
     <>
@@ -16,6 +19,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<OurStory />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </>

@@ -1,6 +1,10 @@
 import React from "react";
+import groupIcon from "../images/Group.png";
+import servicesIcon from "../images/Services.png";
+import shoppingBagIcon from "../images/Icon-Shopping bag.png";
+import moneyBagIcon from "../images/Icon-Moneybag.png";
 
-const ourstory = () => {
+const OurStory = () => {
   return (
     <div>
       <div>
@@ -27,39 +31,27 @@ const ourstory = () => {
       <div className="stats">
         <div className="saller">
           <span className="saller-item">
-            <img
-              src="C:\Users\21698\Desktop\Green-Field\frontend\src\images\Group.png"
-              alt="saller-item"
-            />
+            <img src={groupIcon} alt="saller-item" />
           </span>
           <p>Sallers active our site</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">
-            <img
-              src="C:\Users\21698\Desktop\Green-Field\frontend\src\images\Services.png"
-              alt="Sales icon"
-            />
+            <img src={servicesIcon} alt="Sales icon" />
           </span>
           <h2>33k</h2>
           <p>Monthly Production Sale</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">
-            <img
-              src="C:\Users\21698\Desktop\Green-Field\frontend\src\images\Icon-Shopping bag.png"
-              alt="Customers icon"
-            />
+            <img src={shoppingBagIcon} alt="Customers icon" />
           </span>
           <h2>45.5k</h2>
           <p>Customer visits to our site</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">
-            <img
-              src="C:\Users\21698\Desktop\Green-Field\frontend\src\images\Icon-Moneybag.png"
-              alt="Sales icon"
-            />
+            <img src={moneyBagIcon} alt="Sales icon" />
           </span>
           <h2>25k</h2>
           <p>Annual gross sales in our site</p>
@@ -69,4 +61,4 @@ const ourstory = () => {
   );
 };
 
-export default ourstory;
+export default OurStory;
