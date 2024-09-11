@@ -6,12 +6,12 @@ function Navbar() {
     <nav className="navbar">
       <h2 className="logo">Exclusive</h2>
       <div className="links">
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     </nav>
-  
   );
 }
 
