@@ -9,7 +9,14 @@ require("dotenv").config();
 module.exports = {
   getAllProducts: async (req, res) => {
     try {
-      const product = await Product.findAll({ include:[Category,Review,Order,Cart]});
+      const product = await Product.findAll({
+        include: [
+          { model: Category, as: "category" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
+      });
       res.status(200).send(product);
     } catch (error) {
       console.error(error);
@@ -29,11 +36,16 @@ module.exports = {
   getProductById: async (req, res) => {
     try {
       const product = await Product.findOne({
-        where : {
-            id : req.params.id
+        where: {
+          id: req.params.id,
         },
-        include:[Category,Review,Order,Cart]
-    });
+        include: [
+          { model: Category, as: "category" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
+      });
       if (product) {
         res.status(200).send(product);
       } else {
@@ -47,11 +59,16 @@ module.exports = {
   getProductByName: async (req, res) => {
     try {
       const product = await Product.findOne({
-        where : {
-            name : req.params.name
+        where: {
+          name: req.params.name,
         },
-        include:[Category,Review,Order,Cart]
-    });
+        include: [
+          { model: Category, as: "category" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
+      });
       if (product) {
         res.status(200).send(product);
       } else {

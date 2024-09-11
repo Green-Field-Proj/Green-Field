@@ -1,36 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+
 import { TextField, Button } from "@mui/material";
 import signuplogin from "../images/signuplogin.png";
-
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../features/AuthSlice";
+import { useNavigate } from "react-router-dom";
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { isLoading, error, successMessage } = useSelector(
+    (state) => state.auth
+  );
+  console.log(useSelector((state) => state.auth));
+  useEffect(() => {
+    if (successMessage) {
+      navigate("/");
+    }
+  }, [successMessage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/user/login",
-        {
-          email,
-          password,
-        },
-        { withCredentials: true }
-      );
-      setSuccessMessage("Login successful!");
-      setErrorMessage("");
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } catch (error) {
-      setErrorMessage(error.response.data.message);
-      setSuccessMessage("");
-    }
+    dispatch(login({ email, password }));
   };
 
   return (
@@ -41,8 +34,9 @@ function Login() {
       <div className="login-form">
         <h2>Log in to Exclusive</h2>
         <h3>Enter your details below</h3>
+        {isLoading && <p className="loading-message">Loading...</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {error && <p className="error-message">{error.message}</p>}
         <form onSubmit={handleSubmit}>
           {/* <div>
           <label htmlFor="email">Email:</label>
