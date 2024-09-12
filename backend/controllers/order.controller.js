@@ -40,8 +40,8 @@ module.exports = {
           id: req.params.id,
         },
         include: [
-          { model: User, as: "user" },
-          { model: Product, as: "product" },
+          { model: User, as: "client" },
+          { model: Product, as: "products" },
         ],
       });
 

@@ -12,7 +12,7 @@ const {
   CategoryRouter.get("/getAll", getAllCategorys);
   CategoryRouter.post("/add", AddCategory);
   CategoryRouter.get("/byId/:id", getCategoryById);
-  CategoryRouter.get("/byName/:id", getCategoryByName);
+  CategoryRouter.get("/byName/:name", getCategoryByName);
   CategoryRouter.put("/:id", updateCategory);
   CategoryRouter.delete("/:id", deleteCategory);
 

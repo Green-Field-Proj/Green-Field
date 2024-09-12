@@ -1,5 +1,6 @@
 // import your Models Here
 const Product = require("../models/product.model");
+const User = require("../models/user.model");
 const Review = require("../models/review.model");
 const Order = require("../models/order.model");
 const Category = require("../models/category.model");
@@ -12,6 +13,7 @@ module.exports = {
       const product = await Product.findAll({
         include: [
           { model: Category, as: "category" },
+          { model: User, as: "user" },
           { model: Review, as: "reviews" },
           { model: Order, as: "orders" },
           { model: Cart, as: "carts" },
@@ -41,6 +43,7 @@ module.exports = {
         },
         include: [
           { model: Category, as: "category" },
+          { model: User, as: "user" },
           { model: Review, as: "reviews" },
           { model: Order, as: "orders" },
           { model: Cart, as: "carts" },
@@ -64,6 +67,7 @@ module.exports = {
         },
         include: [
           { model: Category, as: "category" },
+          { model: User, as: "user" },
           { model: Review, as: "reviews" },
           { model: Order, as: "orders" },
           { model: Cart, as: "carts" },
