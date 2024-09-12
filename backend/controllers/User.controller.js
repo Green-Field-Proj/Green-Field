@@ -67,14 +67,19 @@ module.exports = {
         { expiresIn: "1h" }
       );
       res.cookie("token", token, { httpOnly: true });
-      res.status(200).json({ message: "Login successful" });
+      res.status(200).json({ message: "Login successful", role: user.role });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   },
   getAllUsers: async (req, res) => {
     try {
-      const users = await User.findAll({});
+      const users = await User.findAll({include: [
+        { model: Product, as: "products" },
+        { model: Review, as: "reviews" },
+        { model: Order, as: "orders" },
+        { model: Cart, as: "carts" },
+      ],});
       res.status(200).send(users);
     } catch (error) {
       console.error(error);
@@ -87,6 +92,12 @@ module.exports = {
         where: {
           id: req.params.id,
         },
+        include: [
+          { model: Product, as: "products" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
       });
       if (user) {
         res.status(200).send(user);
@@ -104,7 +115,12 @@ module.exports = {
         where: {
           username: req.params.username,
         },
-        include: [Product, Category, Review, Order, Cart],
+        include: [
+          { model: Product, as: "products" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
       });
       if (user) {
         res.status(200).send(user);
