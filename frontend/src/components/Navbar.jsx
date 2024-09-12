@@ -12,6 +12,7 @@ function Navbar() {
         <Link to="/contact">Contact</Link>
         <Link to="/about">About Us</Link>
         <Link to="/admin">Admin Dashboard</Link>
+        <Link to="/search">Search</Link>
       </div>
     </nav>
   );
