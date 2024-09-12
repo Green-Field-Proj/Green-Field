@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login.jsx";
@@ -11,10 +11,18 @@ import ContactUs from "./components/ContactUs.jsx";
 import OurStory from "./components/OurStory.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
 import NotFound from "./components/NotFound.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Profile from "./components/Profile.jsx";
+import { checkStatus } from "./features/AuthSlice.js";
 
 const App = () => {
-  const role = useSelector((state) => state.auth.role);
+  const { role } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkStatus());
+  }, [dispatch]);
+
   return (
     <>
       <TopHeader />
@@ -28,6 +36,7 @@ const App = () => {
         {role === "admin" && (
           <Route path="/admin" element={<AdminDashboard />} />
         )}
+        {role && <Route path="/profile" element={<Profile />} />}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
