@@ -3,7 +3,9 @@ import axios from "axios";
 
 const initialState = {
   role: null,
-
+  userName: null,
+  email: null,
+  profilePicture: null,
   isLoading: false,
   error: null,
   successMessage: null,
@@ -15,7 +17,10 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post(
         "http://localhost:3000/api/user/login",
-        credentials
+        credentials,
+        {
+          withCredentials: true,
+        }
       );
       return response.data;
     } catch (error) {
@@ -25,14 +30,41 @@ export const login = createAsyncThunk(
   }
 );
 
+export const checkStatus = createAsyncThunk(
+  "auth/checkStatus",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("http://localhost:3000/api/user/check", {
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post(
+        "http://localhost:3000/api/user/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      return;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.role = null;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
@@ -42,10 +74,31 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.role = action.payload.role;
         state.successMessage = action.payload.message;
+        state.userName = action.payload.userName;
+        state.email = action.payload.email;
+        state.profilePicture = action.payload.profilePicture;
+        state.error = null;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      .addCase(checkStatus.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.role = action.payload.role;
+        state.userName = action.payload.username;
+        state.email = action.payload.email;
+        state.profilePicture = action.payload.profileImage;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.role = null;
+        state.userName = null;
+        state.email = null;
+        state.profilePicture = null;
+        state.error = null;
+        state.successMessage = "Logged out successfully";
       });
   },
 });

@@ -7,7 +7,7 @@ function HeroSection() {
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -23,7 +23,7 @@ function HeroSection() {
   return (
     <div
       className="slider-container"
-      style={{ width: "100%", margin: "0 auto", height: "500px" }}
+      style={{ width: "60%", margin: "0 auto" }}
     >
       <Slider {...settings}>
         {images.map((image, index) => (

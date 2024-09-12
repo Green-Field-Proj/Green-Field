@@ -11,15 +11,14 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const { isLoading, error, successMessage } = useSelector(
+  const { isLoading, error, successMessage, role } = useSelector(
     (state) => state.auth
   );
-  console.log(useSelector((state) => state.auth));
   useEffect(() => {
-    if (successMessage) {
+    if (successMessage || role) {
       navigate("/");
     }
-  }, [successMessage]);
+  }, [successMessage, role]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
