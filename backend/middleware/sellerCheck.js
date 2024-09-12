@@ -3,7 +3,7 @@ require("dotenv").config();
 
 // MiddleWare Here we will need auth for now
 
-const authenticate = (req, res, next) => {
+const sellerCheck = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -12,8 +12,10 @@ const authenticate = (req, res, next) => {
     if (err) {
       return res.status(401).json({ message: "Invalid token" });
     }
-    req.user = decoded;
+    if (decoded.role !== "seller") {
+      return res.status(403).json({ message: "You are not a seller" });
+    }
     next();
   });
 };
-module.exports = authenticate;
+module.exports = sellerCheck;

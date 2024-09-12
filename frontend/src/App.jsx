@@ -10,7 +10,11 @@ import Footer from "./components/Footer.jsx";
 import ContactUs from "./components/ContactUs.jsx";
 import OurStory from "./components/OurStory.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
+import NotFound from "./components/NotFound.jsx";
+import { useSelector } from "react-redux";
+
 const App = () => {
+  const role = useSelector((state) => state.auth.role);
   return (
     <>
       <TopHeader />
@@ -21,7 +25,10 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<OurStory />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        {role === "admin" && (
+          <Route path="/admin" element={<AdminDashboard />} />
+        )}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
