@@ -21,7 +21,8 @@ body {
   padding: 10px 0;
 }
 
-/* Navbar styles */
+
+
 /* Navbar styles */
 nav {
   background-color: white;
@@ -31,7 +32,11 @@ nav {
   justify-content: space-between;
   align-items: center; 
   height: 40px; 
-}
+
+    gap: 15px; /* Space between links, search bar, and icon */
+    flex-wrap: wrap; /* Wrap items on smaller screens if needed */
+  }
+
 
 nav .logo {
   margin: 0;
@@ -42,7 +47,8 @@ nav .logo {
 
 nav .links {
   display: flex; 
-  margin-right: 600px;
+  align-items: center;
+  margin-right: 0px;
 }
 
 nav a {
@@ -102,6 +108,7 @@ nav a:hover {
   margin: 0; }
 
 #haveAccountLogIn{
+  margin-left: 20px;
   font-weight: 500  ;
   border-bottom: 1px solid black;
   padding-bottom: 3px;
@@ -463,4 +470,337 @@ margin-left: 125px;
 #forgotPass:hover{
   cursor:pointer;
   color:#971f20
+}
+
+.contact-container{
+
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 70vh;
+ 
+  
+}
+
+
+#call-write{
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.call-to-us h3{
+  display: flex; 
+  align-items: center; 
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  font-family:'Poppins', sans-serif;
+}
+.call-to-us img {
+  margin-right: 8px;
+
+}
+
+
+
+.call-to-us p{
+  font-family:'Poppins', sans-serif;
+  font-weight: 400;
+    font-size: 14px;
+    line-height: 21px; 
+}
+
+.call-to-us{
+  text-align: left;
+  margin-left: 30px;
+}
+
+.write-to-us h3{
+  display: flex; 
+  align-items: center; 
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  font-family:'Poppins', sans-serif;
+}
+.write-to-us img {
+  margin-right: 8px;
+
+}
+
+
+
+.write-to-us p{
+  font-family:'Poppins', sans-serif;
+  font-weight: 400;
+    font-size: 14px;
+    line-height: 21px; 
+}
+
+.write-to-us{
+  text-align: left;
+  margin-left: 30px;
+}
+
+.send-message{
+  margin-left: 30px;
+  width: 800px;
+  max-height: 800px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+.send-message-form{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  max-height: 345px;
+  
+}
+.form-group{
+  display:inline-block;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.your-msg{
+  margin-left: 20px;
+}
+
+#msg-btn{
+ background-color:  #DB4444;
+ text-transform: none;
+ font-family: 'Poppins','sans-serif';
+ width: 215px;
+ border-radius: 4px;
+ height: 50px;
+ font-weight: 500;
+ line-height: 24px;
+ margin-left: 570px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    height: auto;
+    flex-direction: column;
+  }
+
+  #call-write {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .call-to-us, .write-to-us {
+    margin-left: 15px;
+  }
+
+  .send-message {
+    width: 90%;
+    max-height: none;
+    margin-left: 0;
+  }
+
+  .form-group {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+
+  .your-msg {
+    margin-left: 0;
+  }
+
+  #msg-btn {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+#our-story{
+  margin-left: 135px;
+  margin-top: 342px;
+}
+
+#our-story-img{
+  height: 609px;
+  margin-left: 735px;
+  margin-top: -530px;
+}
+
+#icon-img{
+  margin-bottom: 5px;
+  margin-top: -10px;
+}
+
+.stat-item{
+  display:inline-block;  
+  margin-left: 30px;
+}
+
+#stat-item:hover{
+  background-color: red;
+  color:white;
+}
+
+.stat-container{
+  margin-left: 10%;
+  margin-top: 10%;
+}
+.img-container1 {
+  width: 80px; 
+  height: 80px; 
+  background-image: url('../src/images/whiteShop.png'); 
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.28s ease; 
+  margin: 0 auto; 
+  display: inline-block;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+
+.card:hover .img-container1 {
+  background-image: url('../src/images/blackShop.png'); 
+}
+
+.img-container2 {
+  width: 80px; 
+  height: 80px; 
+  background-image: url('../src/images/whiteDollar.png'); 
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.28s ease; 
+  margin: 0 auto; 
+  display: inline-block;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+
+.card:hover .img-container2 {
+  background-image: url('../src/images/blackDollar.png'); 
+}
+
+.img-container3 {
+  width: 80px; 
+  height: 80px; 
+  background-image: url('../src/images/whiteBag.png'); 
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.28s ease; 
+  margin: 0 auto; 
+  display: inline-block;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+
+.card:hover .img-container3 {
+  background-image: url('../src/images/blackShoppingBag.png'); 
+}
+
+.img-container4{
+  width: 80px; 
+  height: 80px; 
+  background-image: url('../src/images/whiteMoney.png'); 
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.28s ease; 
+  margin: 0 auto; 
+  display: inline-block;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  
+}
+
+
+.card:hover .img-container4 {
+  background-image: url('../src/images/blackMoney.png'); 
+}
+
+.card div{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.fullServices{
+  margin-left: 7.5%;
+margin-top: 20%;
+margin-bottom: 10%
+
+}
+
+#search{
+  
+  width: 170px;height: 23px;gap: 0px;opacity: 0.5px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  border-bottom: none;
+  
+}
+
+#searchbar{
+  margin-top: 4px; 
+  margin-right: 250px;
+  margin-left: 150px;
+}
+#searchbar:hover{
+  cursor: pointer;
+}
+
+.search-icon{
+  margin-top: 3px;
+}
+.search-icon:hover{
+  cursor: pointer;
+}
+
+
+.wishlist-icon-container {
+  display: flex;
+  align-items: center; 
+  
+  
+}
+
+.wishlist-icon {
+  cursor: pointer; 
+  margin-top: 7px;
+  margin-left: 120px;
+
+}
+
+.cart-icon-container {
+  display: flex;
+  align-items: center; 
+  
+  
+}
+
+.cart-icon {
+  cursor: pointer; 
+  margin-top: 7px;
+  margin-left: -120px;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center; 
+  
+  
+}
+
+.avatar {
+  cursor: pointer; 
+  margin-top: 7px;
+  margin-left: -220px;
+  
+}
+
+
+#basic-menu{
+  height: 3000px;
 }

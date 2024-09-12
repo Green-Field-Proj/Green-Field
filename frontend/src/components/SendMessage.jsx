@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
+import { TextField, Button, FormControl } from "@mui/material";
+import Card from '@mui/material/Card';
 
 const SendMessage = () => {
   const [data, setData] = useState({
@@ -21,54 +23,86 @@ const SendMessage = () => {
 
   return (
     <div className="send-message">
-      <h3>Send Us a Message</h3>
+      <Card>
       <form onSubmit={handleSubmit} className="send-message-form">
         <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={data.name}
-            onChange={handleChange}
-            required
-          />
+          <TextField
+              id="name"
+              name="name"
+              label="Name"
+              variant="filled"
+              InputProps={{
+                style: {
+                  height: '50px', 
+                  width: '235px',
+                },
+              }}
+              value={data.name}
+              onChange={handleChange}
+            />
+          
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
+          <TextField
+              id="email"
+              name="email"
+              label="Email"
+              variant="filled"
+              InputProps={{
+                style: {
+                  height: '50px', 
+                  width: '235px',
+                },
+              }}
             value={data.email}
             onChange={handleChange}
-            required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="subject">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
+          
+          <TextField
+              id="subject"
+              name="subject"
+              label="Subject"
+              variant="filled"
+              InputProps={{
+                style: {
+                  height: '50px', 
+                  width: '235px',
+                },
+              }}
             value={data.subject}
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
+        <div className="your-msg">
+        <TextField
+          id="message"
+          name="message"
+          label="Your Message"
+          placeholder="Write Here"
+          multiline
+          maxRows={10}
+          InputProps={{
+            style: {
+              minHeight: '207px', 
+              width: '766px',
+              borderRadius: '4px',
+            },
+          }}
+
+        
             value={data.message}
             onChange={handleChange}
-            required
-          ></textarea>
+            
+          />
         </div>
-        <button type="submit" className="submit-btn">
-          Send Message
-        </button>
+        <Button variant="contained" type="submit" disableElevation id="msg-btn">
+            Send Message
+          </Button>
+        
       </form>
+      </Card>
     </div>
   );
 };
