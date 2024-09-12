@@ -24,7 +24,12 @@ module.exports = {
   
   getAllReviews: async (req, res) => {
     try {
-      const reviews = await Review.findAll({ include:[User,Product]});
+      const reviews = await Review.findAll({ 
+        include:[ 
+          { model: Product, as: "product" },
+          { model: User, as: "user" }
+        ]
+      });
       res.status(200).json(reviews);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -38,7 +43,10 @@ module.exports = {
         where : {
             id : req.params.id
         },
-        include:[User,Product]
+        include:[ 
+          { model: Product, as: "product" },
+          { model: User, as: "user" }
+        ]
     });
       if (!review) {
         return res.status(404).json({ message: "Review not found" });

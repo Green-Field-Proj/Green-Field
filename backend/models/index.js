@@ -13,6 +13,10 @@ const Cart = require("./cart.model");
 User.hasMany(Review, { as: "reviews", foreignKey: "userId" });
 Review.belongsTo(User, { as: "user", foreignKey: "userId" });
 
+// User <--> Product
+User.hasMany(Product, { as: "products", foreignKey: "userId" });
+Product.belongsTo(User, { as: "user", foreignKey: "userId" });
+
 // Product <--> Review
 Product.hasMany(Review, { as: "reviews", foreignKey: "productId" });
 Review.belongsTo(Product, { as: "product", foreignKey: "productId" });
