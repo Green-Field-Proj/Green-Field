@@ -9,7 +9,6 @@ import ContactUs from "./components/ContactUs.jsx";
 import TopHeader from "./components/TopHeader.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import ContactUs from "./components/ContactUs.jsx";
 import OurStory from "./components/OurStory.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
 const App = () => {
@@ -24,7 +23,6 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<OurStory />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </>
