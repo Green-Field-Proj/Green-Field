@@ -14,7 +14,7 @@ UserRouter.post("/register", userSignup);
 UserRouter.post("/login", userLogin);
 UserRouter.get("/getAll", getAllUsers);
 UserRouter.get("/byId/:id", getUserById);
-UserRouter.get("/byName/:userName", getUserByName);
+UserRouter.get("/byName/:username", getUserByName);
 UserRouter.put("/:id", updateUser);
 UserRouter.delete("/:id", deleteUser);
 
