@@ -5,7 +5,7 @@ require("dotenv").config();
 module.exports = {
     getAllCategorys: async (req, res) => {
         try {
-          const categorys = await Category.findAll({ include:[Product]});
+          const categorys = await Category.findAll({ include:[ { model: Product, as: "products" }]});
           res.status(200).send(categorys);
         } catch (error) {
           console.error(error);
@@ -28,7 +28,7 @@ module.exports = {
             where : {
                 id : req.params.id
             },
-            include:[Product]
+            include:[ { model: Product, as: "products" }]
         });
           if (category) {
             res.status(200).send(category);
@@ -46,7 +46,7 @@ module.exports = {
             where : {
                 name : req.params.name
             },
-            include:[Product]
+            include:[ { model: Product, as: "products" }]
         });
           if (category) {
             res.status(200).send(category);

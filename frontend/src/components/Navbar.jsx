@@ -6,6 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import UserMenu from "./UserMenu"
+import Search from "./Search"
 
 
 
@@ -31,7 +32,7 @@ function Navbar() {
         <Link to="/contact">Contact</Link>
         <Link to="/about">About Us</Link>
         <Link to="/admin">Admin Dashboard</Link>
-        </div>
+        <Search/>        </div>
         
         {/* <div className="searchbar-container">
         <SearchBar/>

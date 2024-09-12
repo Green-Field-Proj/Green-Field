@@ -12,7 +12,7 @@ const {
 ProductsRouter.get("/getAll", getAllProducts);
 ProductsRouter.post("/add", AddProduct);
 ProductsRouter.get("/byId/:id", getProductById);
-ProductsRouter.get("/byName/:id", getProductByName);
+ProductsRouter.get("/byName/:name", getProductByName);
 ProductsRouter.put("/:id", updateProduct);
 ProductsRouter.delete("/:id", deleteProduct);
 module.exports = ProductsRouter;
