@@ -19,7 +19,7 @@ module.exports = {
       console.log(result.secure_url);
       const { username, email, password, role } = req.body;
       // Input validation
-      if (role !== "Seller" && role !== "client") {
+      if (role !== "seller" && role !== "client") {
         return res.status(400).json({ message: "Invalid role" });
       }
       if (!username || !email || !password || !role) {
