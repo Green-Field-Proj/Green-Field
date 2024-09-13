@@ -15,10 +15,10 @@ function Login() {
     (state) => state.auth
   );
   useEffect(() => {
-    if (successMessage || role) {
+    if (role) {
       navigate("/");
     }
-  }, [successMessage, role]);
+  }, [role]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

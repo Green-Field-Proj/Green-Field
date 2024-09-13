@@ -110,4 +110,24 @@ module.exports = {
       res.status(500).send("Internal server error");
     }
   },
+  getFlashSaleProducts: async (req, res) => {
+    try {
+      const flashSaleProducts = await Product.findAll({
+        where: {
+          discount: {
+            [Op.gt]: 0,
+          },
+        },
+        order: [["discount", "DESC"]],
+      });
+      const parsedProducts = flashSaleProducts.map((product) => ({
+        ...product.toJSON(),
+        price: parseFloat(product.price),
+      }));
+      res.status(200).send(parsedProducts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal server error");
+    }
+  },
 };

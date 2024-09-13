@@ -15,8 +15,8 @@ function Home() {
       <FlashSales />
       <BrowseByCategory />
       <BestSellingProducts />
-      <ProductExploration />
       <PromoBanner />
+      <ProductExploration />
       <NewArrivals />
     </div>
   );

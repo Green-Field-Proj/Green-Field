@@ -15,6 +15,7 @@ import NotFound from "./components/NotFound.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./components/Profile.jsx";
 import { checkStatus } from "./features/AuthSlice.js";
+import SellerDashboard from "./components/SellerDashboard.jsx";
 
 const App = () => {
   const { role } = useSelector((state) => state.auth);
@@ -38,6 +39,9 @@ const App = () => {
           <Route path="/admin" element={<AdminDashboard />} />
         )}
         {role && <Route path="/profile" element={<Profile />} />}
+        {role === "seller" && (
+          <Route path="/seller" element={<SellerDashboard />} />
+        )}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

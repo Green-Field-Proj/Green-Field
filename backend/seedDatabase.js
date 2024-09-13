@@ -70,6 +70,7 @@ async function seedDatabase() {
         description: "Latest model smartphone",
         price: 699.99,
         stock: 50,
+        discount: 0.15,
         imageUrl:
           "https://lofficielshop.tn/fr/9764-large_default/smartphone-apple-iphone-14-5g-128-go.jpg",
         categoryId: categories[0].id,
@@ -79,6 +80,7 @@ async function seedDatabase() {
         description: "High performance laptop",
         price: 1199.99,
         stock: 30,
+        discount: 0.1,
         imageUrl:
           "https://spacenet.tn/55755-large_default/apple-macbook-air-m1-8go-256-go-gris-sideral-mgn63fna.jpg",
         categoryId: categories[0].id,
