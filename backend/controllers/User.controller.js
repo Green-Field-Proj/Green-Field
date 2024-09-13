@@ -15,7 +15,7 @@ module.exports = {
     try {
       const { username, email, password, role, profileImage } = req.body;
       // Input validation
-      if (role !== "Seller" && role !== "client") {
+      if (role !== "seller" && role !== "client") {
         return res.status(400).json({ message: "Invalid role" });
       }
       if (!username || !email || !password || !role) {
