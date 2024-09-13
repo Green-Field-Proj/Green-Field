@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -7,12 +7,16 @@ import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
 import UserMenu from "./UserMenu";
 import Search from "./Search";
+import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../features/AuthSlice";
+import { useNavigate } from "react-router-dom";
+
 function Navbar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,11 +25,18 @@ function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { role } = useSelector((state) => state.auth);
+  const { role, profilePicture } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    handleClose();
+    navigate("/");
+  };
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+    handleClose();
   };
 
   return (
@@ -33,14 +44,11 @@ function Navbar() {
       <h2 className="logo">Exclusive</h2>
       <div className="links">
         <Link to="/">Home</Link>
-        {!role && <Link to="/login">Login</Link>}
-        {!role && <Link to="/signup">Signup</Link>}
         <Link to="/contact">Contact</Link>
         <Link to="/about">About Us</Link>
         {role === "admin" && <Link to="/admin">Admin Dashboard</Link>}
-        {role && <Link to="/profile">Profile</Link>}
-        {role && <button onClick={handleLogout}>Logout</button>}
-        <Search />{" "}
+        {role === "seller" && <Link to="/seller">My Dashboard</Link>}
+        <Search />
       </div>
 
       {/* <div className="searchbar-container">
@@ -57,12 +65,21 @@ function Navbar() {
       <div className="avatar-container">
         <Avatar
           className="avatar"
-          sx={{ bgcolor: "#DB4444" }}
+          sx={{ bgcolor: "#DB4444", cursor: "pointer" }}
           onClick={handleClick}
-        ></Avatar>
+          src={profilePicture}
+        />
       </div>
 
-      <UserMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
+      <UserMenu
+        anchorEl={anchorEl}
+        open={open}
+        handleClose={handleClose}
+        handleLogout={handleLogout}
+        handleProfileClick={handleProfileClick}
+        isLoggedIn={!!role}
+        profilePicture={profilePicture}
+      />
     </nav>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function FlashSales() {
   const [timeLeft, setTimeLeft] = useState({
@@ -7,6 +8,7 @@ function FlashSales() {
     minutes: 0,
     seconds: 0,
   });
+  const [flashSaleProducts, setFlashSaleProducts] = useState([]);
 
   useEffect(() => {
     const countDownDate = new Date("2024-09-18T23:59:59").getTime();
@@ -30,8 +32,21 @@ function FlashSales() {
       }
     }, 1000);
 
+    fetchFlashSaleProducts();
+
     return () => clearInterval(timer);
   }, []);
+
+  const fetchFlashSaleProducts = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/product/flash-sale"
+      );
+      setFlashSaleProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching flash sale products:", error);
+    }
+  };
 
   return (
     <div className="flash-sales">
@@ -43,7 +58,21 @@ function FlashSales() {
         <span>{timeLeft.minutes} Minutes</span>
         <span>{timeLeft.seconds} Seconds</span>
       </div>
-      <div className="product-list">{/* <ProductCard /> */}</div>
+      <div className="product-list">
+        {flashSaleProducts.map((product) => (
+          <div key={product.id} className="product-card">
+            <img src={product.imageUrl} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>Original Price: ${product.price.toFixed(2)}</p>
+            <p>
+              Discounted Price: $
+              {(product.price * (1 - product.discount)).toFixed(2)}
+            </p>
+            <p>Discount: {(product.discount * 100).toFixed(0)}% OFF</p>
+            <button>Add to Cart</button>
+          </div>
+        ))}
+      </div>
       <button>View All Products</button>
     </div>
   );

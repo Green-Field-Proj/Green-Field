@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import UserEditForm from "./UserEditForm";
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -30,6 +32,32 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleEditUser = (user) => {
+    setSelectedUser(user);
+  };
+
+  const handleUpdateUser = async (updatedUser) => {
+    try {
+      await axios.put(
+        `http://localhost:3000/api/user/${updatedUser.id}`,
+        updatedUser
+      );
+      fetchData();
+      setSelectedUser(null);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
+  const handleDeleteUser = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/user/${userId}`);
+      fetchData();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   return (
     <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
@@ -39,10 +67,19 @@ const AdminDashboard = () => {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              {user.username} - {user.email}
+              {user.username} - {user.email} - {user.role}
+              <button onClick={() => handleEditUser(user)}>Edit</button>
+              <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
             </li>
           ))}
         </ul>
+        {selectedUser && (
+          <UserEditForm
+            user={selectedUser}
+            onUpdate={handleUpdateUser}
+            onCancel={() => setSelectedUser(null)}
+          />
+        )}
       </section>
 
       <section className="products-section">
