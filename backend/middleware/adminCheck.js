@@ -3,7 +3,7 @@ require("dotenv").config();
 
 // MiddleWare Here we will need auth for now
 
-const authenticate = (req, res, next) => {
+const adminCheck = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -12,12 +12,10 @@ const authenticate = (req, res, next) => {
     if (err) {
       return res.status(401).json({ message: "Invalid token" });
     }
-    console.log(
-      decoded,
-      "==================== decoded ================================="
-    );
-    req.user = decoded;
+    if (decoded.role !== "admin") {
+      return res.status(403).json({ message: "Forbidden" });
+    }
     next();
   });
 };
-module.exports = authenticate;
+module.exports = adminCheck;

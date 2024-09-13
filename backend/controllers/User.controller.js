@@ -15,6 +15,9 @@ module.exports = {
     try {
       const { username, email, password, role, profileImage } = req.body;
       // Input validation
+      if (role !== "user" && role !== "client") {
+        return res.status(400).json({ message: "Invalid role" });
+      }
       if (!username || !email || !password || !role) {
         return res.status(400).json({ message: "All fields are required" });
       }
@@ -67,19 +70,27 @@ module.exports = {
         { expiresIn: "1h" }
       );
       res.cookie("token", token, { httpOnly: true });
-      res.status(200).json({ message: "Login successful", role: user.role });
+      res.status(200).json({
+        message: "Login successful",
+        role: user.role,
+        userName: user.username,
+        email: user.email,
+        profilePicture: user.profileImage,
+      });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   },
   getAllUsers: async (req, res) => {
     try {
-      const users = await User.findAll({include: [
-        { model: Product, as: "products" },
-        { model: Review, as: "reviews" },
-        { model: Order, as: "orders" },
-        { model: Cart, as: "carts" },
-      ],});
+      const users = await User.findAll({
+        include: [
+          { model: Product, as: "products" },
+          { model: Review, as: "reviews" },
+          { model: Order, as: "orders" },
+          { model: Cart, as: "carts" },
+        ],
+      });
       res.status(200).send(users);
     } catch (error) {
       console.error(error);
@@ -167,6 +178,24 @@ module.exports = {
       }
     } catch (error) {
       res.status(500).send("Internal server error");
+    }
+  },
+  checkStatus: async (req, res) => {
+    const id = req.user.id;
+
+    const user = await User.findByPk(id, {
+      attributes: ["username", "email", "profileImage", "role"],
+    });
+
+    res.status(200).send(user);
+  },
+  userLogout: async (req, res) => {
+    try {
+      res.clearCookie("token", { httpOnly: true });
+      res.status(200).json({ message: "Logged out successfully" });
+      console.log("Logged out successfully");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   },
 };

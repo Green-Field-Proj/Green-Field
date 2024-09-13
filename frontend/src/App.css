@@ -804,3 +804,43 @@ margin-bottom: 10%
 #basic-menu{
   height: 3000px;
 }
+
+.nf404{
+font-family: Inter;
+font-size: 110px;
+font-weight: 500;
+line-height: 115px;
+letter-spacing: 0.03em;
+margin-bottom: 40px;
+
+}
+
+.nf{
+  margin-top: 150px;
+ text-align: center;
+  height: 50vh;
+ 
+}
+.nf404p{
+
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+
+}
+#nf404-btn{
+  background-color: #DB4444;
+  text-transform: none;
+ 
+font-family: Poppins;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+width:280px;height:56px;padding: 16px 48px 16px 48px;gap: 10px;border-radius: 4px 0px 0px 0px;
+margin-top: 40px;
+}
+
+#search-basic{
+  margin-bottom: -10px;
+}
