@@ -19,18 +19,25 @@ function SignUp() {
     email: "",
     password: "",
     role: "client",
-    imageUrl: "",
+    imageFile: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, files } = e.target;
+    if (name === "imageFile") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: files[0],
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +45,12 @@ function SignUp() {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/user/register",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       setSuccessMessage("Sign up successful! Redirecting to login...");
       setErrorMessage("");
@@ -66,7 +78,7 @@ function SignUp() {
         {errorMessage && (
           <p className="message error-message">{errorMessage}</p>
         )}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div>
             <TextField
               id="username"
@@ -129,12 +141,11 @@ function SignUp() {
             </FormControl>
           </div>
           <div>
-            <label htmlFor="imageUrl">Profile Image URL:</label>
+            <label htmlFor="imageFile">Profile Image URL:</label>
             <input
-              type="url"
-              id="imageUrl"
-              name="imageUrl"
-              value={formData.imageUrl}
+              type="file"
+              id="imageFile"
+              name="imageFile"
               onChange={handleChange}
             />
           </div>

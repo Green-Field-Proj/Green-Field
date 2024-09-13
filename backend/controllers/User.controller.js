@@ -10,10 +10,14 @@ const saltRounds = 10;
 const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 require("dotenv").config();
+const uploadStream = require("../utils/cloudinary");
 module.exports = {
   userSignup: async (req, res) => {
+    console.log(req.file.buffer, "el fileeeeeeeeee li uploaditou ");
     try {
-      const { username, email, password, role, profileImage } = req.body;
+      const result = await uploadStream(req.file.buffer);
+      console.log(result.secure_url);
+      const { username, email, password, role } = req.body;
       // Input validation
       if (role !== "Seller" && role !== "client") {
         return res.status(400).json({ message: "Invalid role" });
@@ -46,10 +50,11 @@ module.exports = {
         email,
         password: hashedPassword,
         role,
-        profileImage,
+        profileImage: result.secure_url,
       });
       res.status(201).json({ message: "User created successfully" });
     } catch (error) {
+      console.error(error);
       res.status(500).json({ message: error.message });
     }
   },

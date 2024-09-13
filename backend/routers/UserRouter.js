@@ -1,6 +1,8 @@
 const express = require("express");
 const UserRouter = express.Router();
 const authenticate = require("../middleware");
+const upload = require("../middleware/multer");
+
 const {
   userLogin,
   userSignup,
@@ -14,7 +16,7 @@ const {
 } = require("../controllers/User.controller");
 
 UserRouter.post("/logout", userLogout);
-UserRouter.post("/register", userSignup);
+UserRouter.post("/register", upload.single("imageFile"), userSignup);
 UserRouter.post("/login", userLogin);
 UserRouter.get("/check", authenticate, checkStatus);
 UserRouter.get("/getAll", getAllUsers);
