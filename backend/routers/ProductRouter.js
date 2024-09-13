@@ -7,7 +7,9 @@ const {
   getProductById,
   updateProduct,
   deleteProduct,
-  getProductByName                 } = require("../controllers/product.controller");
+  getProductByName,
+  getFlashSaleProducts,
+} = require("../controllers/product.controller");
 
 ProductsRouter.get("/getAll", getAllProducts);
 ProductsRouter.post("/add", AddProduct);
@@ -15,4 +17,5 @@ ProductsRouter.get("/byId/:id", getProductById);
 ProductsRouter.get("/byName/:name", getProductByName);
 ProductsRouter.put("/:id", updateProduct);
 ProductsRouter.delete("/:id", deleteProduct);
+ProductsRouter.get("/flash-sale", getFlashSaleProducts);
 module.exports = ProductsRouter;
