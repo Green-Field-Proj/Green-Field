@@ -1,65 +1,139 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity } from "../features/Cartslice";
+import {
+  Typography,
+  Box,
+  Button,
+  IconButton,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const Cart = () => {
-  const cartItems = [
-    {
-      product: "product",
-      price: "price",
-      Quantity: "Quantity",
-      Subtotal: "Subtotal",
-    },
-  ];
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.subtotal, 0);
-  const shipping = 0; // Free shipping
-  const total = subtotal + shipping;
+  const handleRemove = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleQuantityChange = (id, quantity) => {
+    dispatch(updateQuantity({ id, quantity }));
+  };
+
+  const calculateTotal = () => {
+    return cartItems
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
+  };
 
   return (
-    <div>
-      <h1>Shopping Cart</h1>
-
-      {/* Cart Headers  */}
-
-      <div>
-        <span>Product</span>
-        <span>Price</span>
-        <span>Quantity</span>
-        <span>Subtotal</span>
-      </div>
-
-      {/* Cart Items */}
-
-      {cartItems.map((item, index) => (
-        <div key={index}>
-          <span>{item.name}</span>
-          <span>${item.price}</span>
-          <span>{item.Quantity}</span>
-          <span>${item.Subtotal}</span>
-        </div>
-      ))}
-
-      {/* Buttons */}
-      <button onClick={() => alert("Returning to shop")}>Return to Shop</button>
-      <button onClick={() => alert("Cart updated")}>Update Cart</button>
-
-      {/* Coupon Section */}
-
-      <div>
-        <input type="text" placeholder="Coupon Code" />
-        <button onClick={() => alert("Coupon applied")}>Apply Coupon</button>
-      </div>
-
-      {/* Cart Totals */}
-      <div>
-        <p>Subtotal: ${subtotal}</p>
-        <p>Shipping: Free</p>
-        <h2>Total: ${total}</h2>
-      </div>
-
-      <button onClick={() => alert("Proceeding to checkout")}>
-        Proceed to Checkout
-      </button>
-    </div>
+    <Box sx={{ maxWidth: 1200, margin: "0 auto", padding: "20px" }}>
+      <Typography
+        variant="h4"
+        component="h1"
+        gutterBottom
+        sx={{ fontWeight: 600, fontFamily: "Inter", marginBottom: "20px" }}
+      >
+        Your Cart
+      </Typography>
+      {cartItems.length === 0 ? (
+        <Typography variant="body1">Your cart is empty.</Typography>
+      ) : (
+        <>
+          <Grid container spacing={3}>
+            {cartItems.map((item) => (
+              <Grid item xs={12} key={item.id}>
+                <Card sx={{ display: "flex", alignItems: "center" }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ width: 150, height: 150, objectFit: "cover" }}
+                    image={item.imageUrl}
+                    alt={item.name}
+                  />
+                  <CardContent sx={{ flex: 1 }}>
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ fontWeight: 600, fontFamily: "Poppins" }}
+                    >
+                      {item.name}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ fontFamily: "Poppins" }}
+                    >
+                      ${item.price.toFixed(2)}
+                    </Typography>
+                    <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                      <IconButton
+                        onClick={() =>
+                          handleQuantityChange(
+                            item.id,
+                            Math.max(1, item.quantity - 1)
+                          )
+                        }
+                      >
+                        <RemoveIcon />
+                      </IconButton>
+                      <Typography sx={{ mx: 2, fontFamily: "Poppins" }}>
+                        {item.quantity}
+                      </Typography>
+                      <IconButton
+                        onClick={() =>
+                          handleQuantityChange(item.id, item.quantity + 1)
+                        }
+                      >
+                        <AddIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() => handleRemove(item.id)}
+                        sx={{ ml: 2 }}
+                      >
+                        <DeleteOutlineIcon />
+                      </IconButton>
+                    </Box>
+                  </CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{ p: 2, fontWeight: 600, fontFamily: "Poppins" }}
+                  >
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </Typography>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+          <Box sx={{ mt: 4, textAlign: "right" }}>
+            <Typography
+              variant="h5"
+              sx={{ mb: 2, fontWeight: 600, fontFamily: "Inter" }}
+            >
+              Total: ${calculateTotal()}
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#DB4444",
+                color: "white",
+                fontFamily: "Poppins",
+                fontWeight: 500,
+                "&:hover": { backgroundColor: "#c13e3e" },
+              }}
+            >
+              Proceed to Checkout
+            </Button>
+          </Box>
+        </>
+      )}
+    </Box>
   );
 };
 

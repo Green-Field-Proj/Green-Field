@@ -1,4 +1,3 @@
-
 /* Global styles */
 body {
   font-family: "Inter", sans-serif;
@@ -21,7 +20,7 @@ body {
   padding: 10px 0;
 }
 
-.new-arrivals-heading{
+.new-arrivals-heading {
   font-family: Inter;
   font-size: 36px;
   font-weight: 600;
@@ -34,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-margin-bottom: 30px;
+  margin-bottom: 30px;
   background-color: #fff; /* Or whatever background color you prefer */
   position: relative;
 }
@@ -63,31 +62,29 @@ margin-bottom: 30px;
   top: -10px; /* Adjust this value to raise the avatar */
 }
 
-
 /* Navbar styles */
 nav {
   background-color: white;
   padding: 15px;
   border-bottom: 1px solid grey;
-  display: flex; 
+  display: flex;
   justify-content: space-between;
-  align-items: center; 
-  height: 40px; 
+  align-items: center;
+  height: 40px;
 
-    gap: 15px; /* Space between links, search bar, and icon */
-    flex-wrap: wrap; /* Wrap items on smaller screens if needed */
-  }
-
+  gap: 15px; /* Space between links, search bar, and icon */
+  flex-wrap: wrap; /* Wrap items on smaller screens if needed */
+}
 
 nav .logo {
   margin: 0;
   margin-left: 100px;
-  color: black; 
-  font-size: 1.2em; 
+  color: black;
+  font-size: 1.2em;
 }
 
 nav .links {
-  display: flex; 
+  display: flex;
   align-items: center;
   margin-right: 0px;
 }
@@ -95,9 +92,9 @@ nav .links {
 nav a {
   color: black;
   text-decoration: none;
-  margin: 0 15px; 
+  margin: 0 15px;
   font-weight: 500;
-  line-height: 40px; 
+  line-height: 40px;
 }
 
 nav a:hover {
@@ -110,22 +107,19 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start; 
-  gap: 20px; 
+  align-items: flex-start;
+  gap: 20px;
   margin-top: 50px;
   margin-bottom: 100px;
 }
 
-
 .signup-container {
-  
   flex: 1;
-  max-width: 400px; 
-  width: 100%; 
+  max-width: 400px;
+  width: 100%;
   padding: 20px;
-  margin: 0; 
+  margin: 0;
 }
-
 
 .signup-container h2 {
   text-align: left;
@@ -137,35 +131,34 @@ nav a:hover {
 
 .signup-container p {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   margin-top: 15px;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
   margin-left: 20px;
 }
 
 .haveAccount {
-  font-size: 1rem; 
-  margin: 0; }
+  font-size: 1rem;
+  margin: 0;
+}
 
-#haveAccountLogIn{
+#haveAccountLogIn {
   margin-left: 20px;
-  font-weight: 500  ;
+  font-weight: 500;
   border-bottom: 1px solid black;
   padding-bottom: 3px;
 }
-#haveAccountLogIn:hover{
+#haveAccountLogIn:hover {
   cursor: pointer;
-  color:#da4445;
+  color: #da4445;
 }
 
-
-
-.signup-container h3{
+.signup-container h3 {
   font-weight: 400;
   font-size: 1.1rem;
   margin-top: -7px;
-  font-family:"Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 form div {
@@ -197,15 +190,13 @@ input[type="password"] {
   cursor: pointer;
   font-size: 1rem;
   margin-top: 15px;
-  
+
   text-transform: none;
 
   letter-spacing: 1px;
   font-family: "Inter", sans-serif;
   margin-top: 15px;
-
 }
-
 
 .signup-container button[type="submit"]:hover {
   background-color: #971f20;
@@ -351,16 +342,14 @@ footer .copyright {
   border: 1px solid #f5c6cb;
 }
 
-.image-container{
+.image-container {
   width: 100%;
   max-width: 700px;
   flex: 1;
 }
-.image-container img{
-
+.image-container img {
   width: 100%;
-    height: auto;
-
+  height: auto;
 }
 
 @media (max-width: 1024px) {
@@ -439,22 +428,19 @@ footer .copyright {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start; 
-  gap: 20px; 
+  align-items: flex-start;
+  gap: 20px;
   margin-top: 50px;
   margin-bottom: 100px;
 }
 
-
 .login-form {
-  
   flex: 1;
-  max-width: 400px; 
-  width: 100%; 
+  max-width: 400px;
+  width: 100%;
   padding: 20px;
-  margin: 0; 
+  margin: 0;
 }
-
 
 .login-form h2 {
   margin-top: 100px;
@@ -467,15 +453,15 @@ footer .copyright {
 
 .login-form p {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   display: inline-block;
   justify-content: space-between;
   margin-top: 15px;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
-.login-form button[type="submit"]{
+.login-form button[type="submit"] {
   width: 35%;
   padding: 10px;
   background-color: #da4445;
@@ -486,7 +472,7 @@ footer .copyright {
   font-size: 1rem;
   margin-top: 15px;
   height: 50px;
-  
+
   text-transform: none;
 
   letter-spacing: 1px;
@@ -494,128 +480,116 @@ footer .copyright {
   margin-top: 15px;
 }
 
-.login-form h3{
+.login-form h3 {
   font-weight: 400;
   font-size: 1.1rem;
   margin-top: -7px;
-  font-family:"Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
-.login-form button[type="submit"]:hover{
+.login-form button[type="submit"]:hover {
   background-color: #971f20;
 }
 
-#forgotPass{
-margin-left: 125px;
+#forgotPass {
+  margin-left: 125px;
 }
 
-#forgotPass:hover{
-  cursor:pointer;
-  color:#971f20
+#forgotPass:hover {
+  cursor: pointer;
+  color: #971f20;
 }
 
-.contact-container{
-
+.contact-container {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   height: 70vh;
- 
-  
 }
 
-
-#call-write{
+#call-write {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.call-to-us h3{
-  display: flex; 
-  align-items: center; 
+.call-to-us h3 {
+  display: flex;
+  align-items: center;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  font-family:'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .call-to-us img {
   margin-right: 8px;
-
 }
 
-
-
-.call-to-us p{
-  font-family:'Poppins', sans-serif;
+.call-to-us p {
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-    font-size: 14px;
-    line-height: 21px; 
+  font-size: 14px;
+  line-height: 21px;
 }
 
-.call-to-us{
+.call-to-us {
   text-align: left;
   margin-left: 30px;
 }
 
-.write-to-us h3{
-  display: flex; 
-  align-items: center; 
+.write-to-us h3 {
+  display: flex;
+  align-items: center;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  font-family:'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .write-to-us img {
   margin-right: 8px;
-
 }
 
-
-
-.write-to-us p{
-  font-family:'Poppins', sans-serif;
+.write-to-us p {
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-    font-size: 14px;
-    line-height: 21px; 
+  font-size: 14px;
+  line-height: 21px;
 }
 
-.write-to-us{
+.write-to-us {
   text-align: left;
   margin-left: 30px;
 }
 
-.send-message{
+.send-message {
   margin-left: 30px;
   width: 800px;
   max-height: 800px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
 }
-.send-message-form{
+.send-message-form {
   padding-top: 30px;
   padding-bottom: 30px;
   max-height: 345px;
-  
 }
-.form-group{
-  display:inline-block;
+.form-group {
+  display: inline-block;
   margin-right: 10px;
   margin-left: 20px;
 }
-.your-msg{
+.your-msg {
   margin-left: 20px;
 }
 
-#msg-btn{
- background-color:  #DB4444;
- text-transform: none;
- font-family: 'Poppins','sans-serif';
- width: 215px;
- border-radius: 4px;
- height: 50px;
- font-weight: 500;
- line-height: 24px;
- margin-left: 570px;
+#msg-btn {
+  background-color: #db4444;
+  text-transform: none;
+  font-family: "Poppins", "sans-serif";
+  width: 215px;
+  border-radius: 4px;
+  height: 50px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-left: 570px;
 }
 
 @media (max-width: 768px) {
@@ -629,7 +603,8 @@ margin-left: 125px;
     padding-bottom: 20px;
   }
 
-  .call-to-us, .write-to-us {
+  .call-to-us,
+  .write-to-us {
     margin-left: 15px;
   }
 
@@ -656,207 +631,189 @@ margin-left: 125px;
   }
 }
 
-#our-story{
+#our-story {
   margin-left: 135px;
   margin-top: 342px;
 }
 
-#our-story-img{
+#our-story-img {
   height: 609px;
   margin-left: 735px;
   margin-top: -530px;
 }
 
-#icon-img{
+#icon-img {
   margin-bottom: 5px;
   margin-top: -10px;
 }
 
-.stat-item{
-  display:inline-block;  
+.stat-item {
+  display: inline-block;
   margin-left: 30px;
 }
 
-#stat-item:hover{
+#stat-item:hover {
   background-color: red;
-  color:white;
+  color: white;
 }
 
-.stat-container{
+.stat-container {
   margin-left: 10%;
   margin-top: 10%;
 }
 .img-container1 {
-  width: 80px; 
-  height: 80px; 
-  background-image: url('../src/images/whiteShop.png'); 
+  width: 80px;
+  height: 80px;
+  background-image: url("../src/images/whiteShop.png");
   background-size: cover;
   background-position: center;
-  transition: background-image 0.28s ease; 
-  margin: 0 auto; 
+  transition: background-image 0.28s ease;
+  margin: 0 auto;
   display: inline-block;
   margin-top: -10px;
   margin-bottom: 5px;
 }
 
-
 .card:hover .img-container1 {
-  background-image: url('../src/images/blackShop.png'); 
+  background-image: url("../src/images/blackShop.png");
 }
 
 .img-container2 {
-  width: 80px; 
-  height: 80px; 
-  background-image: url('../src/images/whiteDollar.png'); 
+  width: 80px;
+  height: 80px;
+  background-image: url("../src/images/whiteDollar.png");
   background-size: cover;
   background-position: center;
-  transition: background-image 0.28s ease; 
-  margin: 0 auto; 
+  transition: background-image 0.28s ease;
+  margin: 0 auto;
   display: inline-block;
   margin-top: -10px;
   margin-bottom: 5px;
 }
 
-
 .card:hover .img-container2 {
-  background-image: url('../src/images/blackDollar.png'); 
+  background-image: url("../src/images/blackDollar.png");
 }
 
 .img-container3 {
-  width: 80px; 
-  height: 80px; 
-  background-image: url('../src/images/whiteBag.png'); 
+  width: 80px;
+  height: 80px;
+  background-image: url("../src/images/whiteBag.png");
   background-size: cover;
   background-position: center;
-  transition: background-image 0.28s ease; 
-  margin: 0 auto; 
+  transition: background-image 0.28s ease;
+  margin: 0 auto;
   display: inline-block;
   margin-top: -10px;
   margin-bottom: 5px;
 }
-
 
 .card:hover .img-container3 {
-  background-image: url('../src/images/blackShoppingBag.png'); 
+  background-image: url("../src/images/blackShoppingBag.png");
 }
 
-.img-container4{
-  width: 80px; 
-  height: 80px; 
-  background-image: url('../src/images/whiteMoney.png'); 
+.img-container4 {
+  width: 80px;
+  height: 80px;
+  background-image: url("../src/images/whiteMoney.png");
   background-size: cover;
   background-position: center;
-  transition: background-image 0.28s ease; 
-  margin: 0 auto; 
+  transition: background-image 0.28s ease;
+  margin: 0 auto;
   display: inline-block;
   margin-top: -10px;
   margin-bottom: 5px;
-  
 }
-
 
 .card:hover .img-container4 {
-  background-image: url('../src/images/blackMoney.png'); 
+  background-image: url("../src/images/blackMoney.png");
 }
 
-.card div{
+.card div {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.fullServices{
+.fullServices {
   margin-left: 7.5%;
-margin-top: 20%;
-margin-bottom: 10%
-
+  margin-top: 20%;
+  margin-bottom: 10%;
 }
-
-
-
 
 .wishlist-icon-container {
   display: flex;
-  align-items: center; 
-  
-  
+  align-items: center;
 }
 
 .wishlist-icon {
-  cursor: pointer; 
+  cursor: pointer;
   margin-top: 7px;
   margin-left: 120px;
-
 }
 
 .cart-icon-container {
   display: flex;
-  align-items: center; 
-  
-  
+  align-items: center;
 }
 
 .cart-icon {
-  cursor: pointer; 
+  cursor: pointer;
   margin-top: 7px;
   margin-left: -120px;
 }
 
 .avatar-container {
   display: flex;
-  align-items: center; 
-  
-  
+  align-items: center;
 }
 
 .avatar {
-  cursor: pointer; 
+  cursor: pointer;
   margin-top: 7px;
   margin-left: -220px;
-  
 }
 
-
-#basic-menu{
+#basic-menu {
   height: 3000px;
 }
 
-.nf404{
-font-family: Inter;
-font-size: 110px;
-font-weight: 500;
-line-height: 115px;
-letter-spacing: 0.03em;
-margin-bottom: 40px;
-
+.nf404 {
+  font-family: Inter;
+  font-size: 110px;
+  font-weight: 500;
+  line-height: 115px;
+  letter-spacing: 0.03em;
+  margin-bottom: 40px;
 }
 
-.nf{
+.nf {
   margin-top: 150px;
- text-align: center;
+  text-align: center;
   height: 50vh;
- 
 }
-.nf404p{
-
-font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-
+.nf404p {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
-#nf404-btn{
-  background-color: #DB4444;
+#nf404-btn {
+  background-color: #db4444;
   text-transform: none;
- 
-font-family: Poppins;
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
-width:280px;height:56px;padding: 16px 48px 16px 48px;gap: 10px;border-radius: 4px 0px 0px 0px;
-margin-top: 40px;
+
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  width: 280px;
+  height: 56px;
+  padding: 16px 48px 16px 48px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  margin-top: 40px;
 }
 
-#search-basic{
+#search-basic {
   margin-bottom: -10px;
 }
 .slider-wrapper {
@@ -864,161 +821,153 @@ margin-top: 40px;
   margin-top: 30px;
   display: flex;
   justify-content: center; /* Center the slider horizontally */
-  align-items: center;    /* Center the slider vertically if needed */
-  width: 70%;            /* Full width of the parent container */
-  height: 100%;           /* Full height of the parent container */
-  padding: 20px;         /* Optional padding */
+  align-items: center; /* Center the slider vertically if needed */
+  width: 70%; /* Full width of the parent container */
+  height: 100%; /* Full height of the parent container */
+  padding: 20px; /* Optional padding */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .slider-container {
-  position: relative;     /* Allows for absolute positioning of child elements */
-  width: 87%;             /* Responsive width of the slider container */
-  height: 500px;          /* Fixed height for the slider container */
-  overflow: hidden;       /* Hide overflow content */
-  margin-left: 100px;     /* Optional margin for positioning */
+  position: relative; /* Allows for absolute positioning of child elements */
+  width: 87%; /* Responsive width of the slider container */
+  height: 500px; /* Fixed height for the slider container */
+  overflow: hidden; /* Hide overflow content */
+  margin-left: 100px; /* Optional margin for positioning */
 }
 
 .slider-slide {
-  height: 390px;           /* Full height of the slider container */
-  display: flex;          /* Flexbox to center the content */
-  align-items: center;    /* Center content vertically */
+  height: 390px; /* Full height of the slider container */
+  display: flex; /* Flexbox to center the content */
+  align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */
 }
 
 .slider-img {
   top: 0;
   left: 0;
-  width: 100%;            /* Cover the full width of the container */
-  height: 100%;           /* Cover the full height of the container */
-  display: block;         /* Remove default inline spacing */
+  width: 100%; /* Cover the full width of the container */
+  height: 100%; /* Cover the full height of the container */
+  display: block; /* Remove default inline spacing */
 }
 
-
-
-.todays{
+.todays {
   display: flex;
 }
 
-.todays img{
+.todays img {
   height: 40px;
   margin-left: 100px;
 }
-.todays h2{
-font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-line-height: 20px;
-margin-left: 15px;
-color: #DB4444;
-
+.todays h2 {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-left: 15px;
+  color: #db4444;
 }
-.flashSale{
- display: flex;          
-  align-items: center;    
-  margin-left: 100px; 
+.flashSale {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
 }
 
-.flashSale h2{
+.flashSale h2 {
   font-family: Inter;
   font-size: 36px;
   font-weight: 600;
   line-height: 48px;
   letter-spacing: 0.04em;
-  
-  
 }
 
 .timer-wrapper {
   display: flex;
-  
 }
 
 .timer {
-  display: flex;          
-  align-items: center;   
-  font-family: Inter, sans-serif; 
+  display: flex;
+  align-items: center;
+  font-family: Inter, sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 30px;
   letter-spacing: 0.04em;
-  margin-top: 20px;     
+  margin-top: 20px;
   margin-left: 70px;
-  
 }
 
 .time-unit {
-       
 }
 
 .time-value {
-        
 }
 
 .timer p {
   font-family: Poppins, sans-serif;
-  font-size: 12px;        
+  font-size: 12px;
   font-weight: 500;
   line-height: 18px;
   margin-top: -45px;
 }
 
 .separator {
-  color: red;             
-  font-size: 32px;       
-  font-weight: 700;   
+  color: red;
+  font-size: 32px;
+  font-weight: 700;
   margin-top: -20px;
   margin-right: 15px;
-  margin-left: 15px;    
-}
-
-.flashCard{
-  margin-left: 100px;
-}
-
-.flashCardName{
-font-family: Poppins;
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
-text-align: left;
-
-}
-
-.flash-price{
-  display:flex;
-  margin-top: -20px;
-}
-
-.flashCardDiscount{
-  color:red;
-  
-font-family: Poppins;
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
-margin-right: 10px;
-
-}
-
-
-.flashCardPrice{
-  font-family: Poppins;font-size: 16px;font-weight: 500;line-height: 24px;text-align: left;opacity: 50%;
-text-decoration:line-through;
-}
-
-
-.product-list {
-  display: flex;         
-  flex-wrap: wrap;         
+  margin-left: 15px;
 }
 
 .flashCard {
-  background-color: white;   
-  border: 1px solid #ddd;    
-  border-radius: 8px;        
-  width: 350px;            
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin-left: 100px;
+}
+
+.flashCardName {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.flash-price {
+  display: flex;
+  margin-top: -20px;
+}
+
+.flashCardDiscount {
+  color: red;
+
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-right: 10px;
+}
+
+.flashCardPrice {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  opacity: 50%;
+  text-decoration: line-through;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flashCard {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-right: -50px;
   position: relative; /* Required for absolute positioning of overlay */
 }
@@ -1039,24 +988,23 @@ text-decoration:line-through;
   cursor: pointer;
 }
 
-#flash-btn{
-  background-color:  #DB4444;
- text-transform: none;
- font-family: 'Poppins','sans-serif';
- width: 215px;
- border-radius: 4px;
- height: 50px;
- font-weight: 500;
- line-height: 24px;
-
+#flash-btn {
+  background-color: #db4444;
+  text-transform: none;
+  font-family: "Poppins", "sans-serif";
+  width: 215px;
+  border-radius: 4px;
+  height: 50px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
-.flash-button{
-text-align: center; /* Center content horizontally */
-margin-top: 50px;
+.flash-button {
+  text-align: center; /* Center content horizontally */
+  margin-top: 50px;
 }
 
-.divider{
+.divider {
   border: 0;
   border-top: 1px solid grey; /* Light grey color */
   width: 87%;
@@ -1064,57 +1012,7 @@ margin-top: 50px;
   margin-bottom: 50px;
 }
 
-#browseByCategory{
-  font-family: Inter;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 48px;
-    letter-spacing: 0.04em;
-    margin-left: 100px;
-}
-
-.category-item{
-  height: 145px;
-  width: 170px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  margin-right: 60px;
-  text-align: center;
-  margin-bottom: 40px;
-  
-}
-
-.category-item:hover{
-  cursor: pointer;
-}
-.categoryName{
-  margin-top: 10px;
-
-font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-
-
-}
-
-.category-list{
-  margin-left: 100px;
-  margin-top: 50px;
-}
-
-.category-item:hover{
-  background-color: #da4445;
-  transition: background-color 0.28s ease;
-}
-
-.categoryImage{
-  margin-top: 25px;
-  
-}
-
-#bestSellingProducts{
+#browseByCategory {
   font-family: Inter;
   font-size: 36px;
   font-weight: 600;
@@ -1123,10 +1021,56 @@ line-height: 24px;
   margin-left: 100px;
 }
 
-#viewAllSellingProducts{
-  background-color:  #DB4444;
+.category-item {
+  height: 145px;
+  width: 170px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-right: 60px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.category-item:hover {
+  cursor: pointer;
+}
+.categoryName {
+  margin-top: 10px;
+
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.category-list {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.category-item:hover {
+  background-color: #da4445;
+  transition: background-color 0.28s ease;
+}
+
+.categoryImage {
+  margin-top: 25px;
+}
+
+#bestSellingProducts {
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: 0.04em;
+  margin-left: 100px;
+}
+
+#viewAllSellingProducts {
+  background-color: #db4444;
   text-transform: none;
-  font-family: 'Poppins','sans-serif';
+  font-family: "Poppins", "sans-serif";
   width: 160px;
   border-radius: 4px;
   height: 50px;
@@ -1134,14 +1078,13 @@ line-height: 24px;
   line-height: 24px;
   margin-top: 30px;
   margin-left: 785px;
-
 }
 
-.sellingProducts{
-  display:flex;
+.sellingProducts {
+  display: flex;
 }
 
-.product-card{
+.product-card {
   display: inline-block;
   margin-right: 70px;
   margin-right: 100px;
@@ -1149,9 +1092,8 @@ line-height: 24px;
   margin-top: 20px;
 }
 
-.product-list-best{
+.product-list-best {
   margin-left: 100px;
- 
 }
 
 .product-card .overlay {
@@ -1170,26 +1112,29 @@ line-height: 24px;
   cursor: pointer;
 }
 
-.product-price{
-  display:flex;
+.product-price {
+  display: flex;
   margin-top: -20px;
 }
 
-.productCardDiscount{
-  color:red;
-  
-font-family: Poppins;
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
-margin-right: 10px;
+.productCardDiscount {
+  color: red;
 
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-right: 10px;
 }
 
-
-.productCardPrice{
-  font-family: Poppins;font-size: 16px;font-weight: 500;line-height: 24px;text-align: left;opacity: 50%;
-text-decoration:line-through;
+.productCardPrice {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  opacity: 50%;
+  text-decoration: line-through;
 }
 
 .promo-categories {
@@ -1198,77 +1143,79 @@ text-decoration:line-through;
   font-weight: 600;
   line-height: 20px;
   margin-left: 15px;
-  color: #00FF66;
-  
-  }
+  color: #00ff66;
+}
 
-  .promo-banner {
-    position: relative; /* Allows absolute positioning of child elements */
-    height: 400px; /* Fixed height for the banner */
-    width: 87%; /* Responsive width */
-    overflow: hidden; /* Hide any overflow */
+.promo-banner {
+  position: relative; /* Allows absolute positioning of child elements */
+  height: 400px; /* Fixed height for the banner */
+  width: 87%; /* Responsive width */
+  overflow: hidden; /* Hide any overflow */
   margin-left: 100px;
-  }
-  
-  .promo-image img {
-    position: absolute; /* Position image absolutely within the container */
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block;
-  }
-  
-  .promo-content {
-    position: absolute;
-    top: 45%;
-    left: 20%;
-    transform: translate(-50%, -50%); /* Center content */
-    color: white;
-    text-align: left;
-    padding: 20px;
-    border-radius: 8px; /* Optional: rounded corners */
-  }
-  
-  .promo-categories {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  
-  .promo-content h2 {
- 
-    margin: 10px 0;
-font-family: Inter;
-font-size: 48px;
-font-weight: 600;
-line-height: 60px;
-letter-spacing: 0.04em;
+}
 
+.promo-image img {
+  position: absolute; /* Position image absolutely within the container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-  }
-  
-  .promo-content button {
-    
-    background-color: #00FF66; 
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 50px;
-    width: Hug (171px)px;height: Hug (56px)px;top: 375px;left: 56px;padding: 16px 48px 16px 48px;gap: 10px;border-radius: 4px 0px 0px 0px;opacity: 0px;
-  }
-  
-  .promo-content button:hover {
-    background-color: #00CC52
-  }
-  /* Container for the grid of arrival items */
+.promo-content {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%); /* Center content */
+  color: white;
+  text-align: left;
+  padding: 20px;
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+.promo-categories {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.promo-content h2 {
+  margin: 10px 0;
+  font-family: Inter;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: 0.04em;
+}
+
+.promo-content button {
+  background-color: #00ff66;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 50px;
+  width: Hug (171px) px;
+  height: Hug (56px) px;
+  top: 375px;
+  left: 56px;
+  padding: 16px 48px 16px 48px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+}
+
+.promo-content button:hover {
+  background-color: #00cc52;
+}
+/* Container for the grid of arrival items */
 .arrivals-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1293,8 +1240,6 @@ letter-spacing: 0.04em;
   display: block; /* Block display to prevent inline spacing issues */
 }
 
-
-
 /* Container for tall image */
 .tall-image-container {
   width: 100%;
@@ -1308,7 +1253,7 @@ letter-spacing: 0.04em;
 /* Styling for tall images */
 .tall-image {
   height: 600px; /* Fixed height for tall images */
-  width: auto;   /* Width adjusts automatically */
+  width: auto; /* Width adjusts automatically */
   object-fit: inherit;
 }
 
@@ -1316,13 +1261,12 @@ letter-spacing: 0.04em;
 .wide-image {
   height: 300px; /* Adjust this height as needed */
   width: 100%;
-  object-fit:inherit
+  object-fit: inherit;
 }
 
 /* Container for custom height images, placed under the wide image */
 .custom-height-container {
   margin-top: 20px; /* Space above the custom height images */
- 
 }
 
 /* Styling for square images */
@@ -1340,7 +1284,7 @@ letter-spacing: 0.04em;
 /* Specific styling for custom height images */
 .custom-height {
   height: 100%; /* Full height of the container */
-  width: 100%;  /* Full width of the container */
+  width: 100%; /* Full width of the container */
   object-fit: inherit;
 }
 
@@ -1354,7 +1298,12 @@ letter-spacing: 0.04em;
   width: calc(100% - 20px);
   padding: 10px;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text visibility */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Semi-transparent background for text visibility */
 }
 
 /* Title styling */

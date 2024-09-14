@@ -65,4 +65,24 @@ module.exports = {
       res.status(400).json({ error: error.message });
     }
   },
+  syncCart: async (req, res) => {
+    try {
+      const { userId } = req.user;
+      const { items } = req.body;
+
+      await Cart.destroy({ where: { userId } });
+
+      const cartItems = items.map((item) => ({
+        userId,
+        productId: item.id,
+        quantity: item.quantity,
+      }));
+
+      await Cart.bulkCreate(cartItems);
+
+      res.status(200).json(items);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 };

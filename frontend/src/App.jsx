@@ -11,11 +11,13 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import OurStory from "./components/OurStory.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
-import NotFound from "./components/Notfound.jsx"
+import NotFound from "./components/Notfound.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./components/Profile.jsx";
 import { checkStatus } from "./features/AuthSlice.js";
 import SellerDashboard from "./components/SellerDashboard.jsx";
+import { loadCart, syncCart } from "./features/Cartslice.js";
+import Cart from "./components/Cart.jsx";
 
 const App = () => {
   const { role } = useSelector((state) => state.auth);
@@ -23,6 +25,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkStatus());
+    dispatch(loadCart());
+    dispatch(syncCart());
   }, [dispatch]);
 
   return (
@@ -42,6 +46,7 @@ const App = () => {
         {role === "seller" && (
           <Route path="/seller" element={<SellerDashboard />} />
         )}
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
