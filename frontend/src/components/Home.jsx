@@ -12,11 +12,17 @@ function Home() {
   return (
     <div>
       <HeroSection />
+      <hr className="divider" />
       <FlashSales />
+      <hr className="divider" />
       <BrowseByCategory />
+      <hr className="divider" />
       <BestSellingProducts />
+      <hr className="divider" />
       <PromoBanner />
+      <hr className="divider" />
       <ProductExploration />
+      <hr className="divider" />
       <NewArrivals />
     </div>
   );

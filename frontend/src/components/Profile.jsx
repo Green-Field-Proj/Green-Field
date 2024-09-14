@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { TextField, Button } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Grid,
+  Snackbar,
+  Alert,
+  IconButton
+} from "@mui/material";
 import { login } from "../features/AuthSlice";
+import ClearIcon from '@mui/icons-material/Clear'; // For cancel button icon
+
 function Profile() {
   const [formData, setFormData] = useState({
     userName: "",
@@ -13,13 +24,14 @@ function Profile() {
     profilePicture: "",
   });
 
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
+  
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(user, "user");
     setFormData({
       userName: user.userName || "",
       email: user.email || "",
@@ -28,7 +40,7 @@ function Profile() {
       newPassword: "",
       confirmNewPassword: "",
     });
-  }, []);
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,81 +58,249 @@ function Profile() {
         formData,
         { withCredentials: true }
       );
-      setSuccessMessage("Profile updated successfully!");
-      setErrorMessage("");
-
+      setSnackbarMessage("Profile updated successfully!");
+      setSnackbarSeverity("success");
       dispatch(
         login(formData.userName, formData.email, formData.profilePicture)
       );
     } catch (error) {
-      setErrorMessage(error.response.data.message || "An error occurred");
-      setSuccessMessage("");
+      setSnackbarMessage(error.response.data.message || "An error occurred");
+      setSnackbarSeverity("error");
+    } finally {
+      setOpenSnackbar(true);
     }
   };
 
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
   return (
-    <div className="profile-container">
-      <h2>Manage My Account</h2>
-      <h3>Edit Your Profile</h3>
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Username"
-          name="userName"
-          value={formData.userName}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Profile Picture URL"
-          name="profilePicture"
-          value={formData.profilePicture}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <h3>Password Changes</h3>
-        <TextField
-          label="Current Password"
-          name="currentPassword"
-          type="password"
-          value={formData.currentPassword}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="New Password"
-          name="newPassword"
-          type="password"
-          value={formData.newPassword}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Confirm New Password"
-          name="confirmNewPassword"
-          type="password"
-          value={formData.confirmNewPassword}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <div className="button-group">
+    <Box
+      sx={{
+        padding: 3,
+        maxWidth: 800,
+        margin: 'auto',
+        backgroundColor: '#f5f5f5',
+        borderRadius: 2,
+        boxShadow: 3,
+      }}
+    >
+      <Typography variant="h4" gutterBottom sx={{ textAlign: 'center', color: '#333' }}>
+        Manage My Account
+      </Typography>
+      <Typography variant="h6" gutterBottom sx={{ textAlign: 'center', color: '#555' }}>
+        Edit Your Profile
+      </Typography>
+
+      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Username"
+              name="userName"
+              value={formData.userName}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Profile Picture URL"
+              name="profilePicture"
+              value={formData.profilePicture}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom sx={{ color: '#555' }}>
+              Password Changes
+            </Typography>
+            <TextField
+              label="Current Password"
+              name="currentPassword"
+              type="password"
+              value={formData.currentPassword}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+            <TextField
+              label="New Password"
+              name="newPassword"
+              type="password"
+              value={formData.newPassword}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+            <TextField
+              label="Confirm New Password"
+              name="confirmNewPassword"
+              type="password"
+              value={formData.confirmNewPassword}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ 
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 1,
+                  '& fieldset': {
+                    borderColor: '#ddd', // Border color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#aaa', // Border color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#3f51b5', // Border color when focused
+                  }
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 14px', // Adjust padding to ensure background matches
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+                '& .MuiFormLabel-root': {
+                  lineHeight: 1.5, // Center the label vertically
+                }
+              }}
+            />
+          </Grid>
+        </Grid>
+        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'space-between' }}>
           <Button
             variant="outlined"
+            color="secondary"
             onClick={() =>
               setFormData({
                 userName: user.userName,
@@ -131,15 +311,36 @@ function Profile() {
                 confirmNewPassword: "",
               })
             }
+            startIcon={<ClearIcon />}
           >
             Cancel
           </Button>
           <Button variant="contained" type="submit" color="primary">
             Save Changes
           </Button>
-        </div>
-      </form>
-    </div>
+        </Box>
+      </Box>
+
+      {/* Snackbar for success and error messages */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        action={
+          <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
+            <ClearIcon fontSize="small" />
+          </IconButton>
+        }
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbarSeverity}
+          sx={{ width: '100%' }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+    </Box>
   );
 }
 
