@@ -11,7 +11,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import OurStory from "./components/OurStory.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
-import NotFound from "./components/NotFound.jsx";
+import NotFound from "./components/Notfound.jsx"
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./components/Profile.jsx";
 import { checkStatus } from "./features/AuthSlice.js";
