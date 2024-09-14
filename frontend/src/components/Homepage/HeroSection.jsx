@@ -10,7 +10,7 @@ function HeroSection() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     pauseOnHover: true,
   };
 
@@ -21,21 +21,16 @@ function HeroSection() {
   ];
 
   return (
-    <div
-      className="slider-container"
-      style={{ width: "60%", margin: "0 auto" }}
-    >
-      <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index}>
-            <img
-              src={image}
-              alt={"image"}
-              style={{ width: "100%", height: "auto", objectFit: "cover" }}
-            />
-          </div>
-        ))}
-      </Slider>
+    <div className="slider-wrapper">
+      <div className="slider-container">
+        <Slider {...settings}>
+          {images.map((image, index) => (
+            <div className="slider-slide" key={index}>
+              <img src={image} alt={`image ${index}`} className="slider-img" />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
