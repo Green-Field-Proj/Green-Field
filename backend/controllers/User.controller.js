@@ -15,8 +15,6 @@ module.exports = {
   userSignup: async (req, res) => {
     console.log(req.file.buffer, "el fileeeeeeeeee li uploaditou ");
     try {
-      const result = await uploadStream(req.file.buffer);
-      console.log(result.secure_url);
       const { username, email, password, role } = req.body;
       // Input validation
       if (role !== "seller" && role !== "client") {
@@ -44,6 +42,8 @@ module.exports = {
       if (user) {
         return res.status(400).json({ message: "User already exists" });
       }
+      const result = await uploadStream(req.file.buffer);
+      console.log(result.secure_url);
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       await User.create({
         username,
