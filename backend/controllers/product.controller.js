@@ -19,7 +19,11 @@ module.exports = {
           { model: Cart, as: "carts" },
         ],
       });
-      res.status(200).send(product);
+      const parsedProducts = product.map((product) => ({
+        ...product.toJSON(),
+        price: parseFloat(product.price),
+      }));
+      res.status(200).send(parsedProducts);
     } catch (error) {
       console.error(error);
       res.status(500).send("Internal server error");
