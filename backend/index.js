@@ -7,6 +7,7 @@ const orderRouter = require("./routers/orderRouter");
 const reviewRouter = require("./routers/reviewRouter");
 const cartRouter = require("./routers/cartRouter");
 const categoryRouter = require("./routers/categoryRouter");
+const paymentRouter = require("./routers/PaymentRouter");
 
 require("dotenv").config();
 require("./config");
@@ -26,7 +27,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-
+app.use("/api/payment", paymentRouter);
 app.use("/api/product", ProductsRouter);
 app.use("/api/user", userRouter);
 app.use("/api/order", orderRouter);

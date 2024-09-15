@@ -5,7 +5,6 @@ const Product = require("../models/product.model");
 const { Op } = require("sequelize");
 require("dotenv").config();
 module.exports = {
-  // Add a product to the cart
   addToCart: async (req, res) => {
     try {
       const { userId, productId, quantity } = req.body;
@@ -24,7 +23,6 @@ module.exports = {
     }
   },
 
-  // Get all items in the cart for a user
   getCartItems: async (req, res) => {
     try {
       const userId = req.params.userId;
@@ -35,7 +33,6 @@ module.exports = {
     }
   },
 
-  // Update a cart item
   updateCartItem: async (req, res) => {
     try {
       const cartId = req.params.id;
@@ -51,7 +48,6 @@ module.exports = {
     }
   },
 
-  // Remove a product from the cart
   removeFromCart: async (req, res) => {
     try {
       const cartId = req.params.id;

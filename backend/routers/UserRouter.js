@@ -2,6 +2,7 @@ const express = require("express");
 const UserRouter = express.Router();
 const authenticate = require("../middleware");
 const upload = require("../middleware/multer");
+const adminAuth = require("../middleware/adminCheck");
 
 const {
   userLogin,
@@ -22,7 +23,7 @@ UserRouter.get("/check", authenticate, checkStatus);
 UserRouter.get("/getAll", getAllUsers);
 UserRouter.get("/byId/:id", getUserById);
 UserRouter.get("/byName/:username", getUserByName);
-UserRouter.put("/:id", updateUser);
-UserRouter.delete("/:id", deleteUser);
+UserRouter.put("/update", authenticate, updateUser);
+UserRouter.delete("/delete", adminAuth, deleteUser);
 
 module.exports = UserRouter;

@@ -14,8 +14,11 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -31,6 +34,10 @@ const Cart = () => {
     return cartItems
       .reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    navigate("/checkout");
   };
 
   return (
@@ -127,6 +134,7 @@ const Cart = () => {
                 fontWeight: 500,
                 "&:hover": { backgroundColor: "#c13e3e" },
               }}
+              onClick={handleCheckout}
             >
               Proceed to Checkout
             </Button>
