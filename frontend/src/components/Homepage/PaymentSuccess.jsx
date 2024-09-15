@@ -19,7 +19,11 @@ const PaymentSuccess = () => {
       </Typography>
       <Typography variant="body1">
         Thank you for your purchase. Your order has been placed successfully.
-        <Button variant="contained" color="primary" onClick={navigate("/")}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/")}
+        >
           Return to Homepage
         </Button>
       </Typography>

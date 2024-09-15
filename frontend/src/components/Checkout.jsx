@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Button, Typography, Box } from "@mui/material";
-import { clearCart } from "../features/Cartslice";
 
 const Checkout = () => {
   const [paymentUrl, setPaymentUrl] = useState(null);
   const cart = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
 
   const calculateTotal = () => {
     return cart
