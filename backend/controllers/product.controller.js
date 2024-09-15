@@ -163,4 +163,24 @@ module.exports = {
       res.status(500).send("Internal server error");
     }
   },
+  getSellerProducts: async (req, res) => {
+    console.log(req.user, "req.user =========================>");
+    try {
+      const products = await Product.findAll({
+        where: { userId: req.user.id },
+        include: [
+          { model: Category, as: "category" },
+          { model: Review, as: "reviews" },
+        ],
+      });
+      const parsedProducts = products.map((product) => ({
+        ...product.toJSON(),
+        price: parseFloat(product.price),
+      }));
+      res.status(200).send(parsedProducts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal server error");
+    }
+  },
 };

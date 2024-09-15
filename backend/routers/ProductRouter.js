@@ -10,6 +10,7 @@ const {
   getProductByName,
   getFlashSaleProducts,
   searchProducts,
+  getSellerProducts,
 } = require("../controllers/product.controller");
 
 ProductsRouter.get("/getAll", getAllProducts);
@@ -20,4 +21,6 @@ ProductsRouter.put("/:id", updateProduct);
 ProductsRouter.delete("/:id", deleteProduct);
 ProductsRouter.get("/flash-sale", getFlashSaleProducts);
 ProductsRouter.get("/search", searchProducts);
+ProductsRouter.get("/seller", authenticate, getSellerProducts);
+
 module.exports = ProductsRouter;

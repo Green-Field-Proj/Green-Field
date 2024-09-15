@@ -1,29 +1,62 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Container,
+} from "@mui/material";
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
     price: "",
     stock: "",
     imageUrl: "",
+    categoryId: "",
   });
 
   useEffect(() => {
     fetchProducts();
+    fetchCategories();
   }, []);
 
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/product/getAll",
+        "http://localhost:3000/api/product/seller",
         { withCredentials: true }
       );
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/categories", {
+        withCredentials: true,
+      });
+      setCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
     }
   };
 
@@ -38,7 +71,14 @@ const SellerDashboard = () => {
         withCredentials: true,
       });
       fetchProducts();
-      setNewProduct({ name: "", description: "", price: "", stock: "" });
+      setNewProduct({
+        name: "",
+        description: "",
+        price: "",
+        stock: "",
+        imageUrl: "",
+        categoryId: "",
+      });
     } catch (error) {
       console.error("Error adding product:", error);
     }
@@ -58,55 +98,135 @@ const SellerDashboard = () => {
   };
 
   return (
-    <div>
-      <h2>Seller Dashboard</h2>
-      <form onSubmit={handleAddProduct}>
-        <input
-          name="name"
-          value={newProduct.name}
-          onChange={handleInputChange}
-          placeholder="Product Name"
-        />
-        <input
-          name="description"
-          value={newProduct.description}
-          onChange={handleInputChange}
-          placeholder="Description"
-        />
-        <input
-          name="price"
-          value={newProduct.price}
-          onChange={handleInputChange}
-          placeholder="Price"
-          type="number"
-        />
-        <input
-          name="stock"
-          value={newProduct.stock}
-          onChange={handleInputChange}
-          placeholder="Stock"
-          type="number"
-        />
-        <button type="submit">Add Product</button>
-      </form>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.name} - ${product.price} - Stock: {product.stock}
-            <button
-              onClick={() =>
-                handleUpdateProduct(product.id, {
-                  ...product,
-                  stock: product.stock + 1,
-                })
-              }
-            >
-              Increase Stock
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Container maxWidth="lg">
+      <Box sx={{ mt: 4, mb: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Seller Dashboard
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, height: "100%" }}>
+              <Typography variant="h6" gutterBottom>
+                Add New Product
+              </Typography>
+              <form onSubmit={handleAddProduct}>
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="name"
+                  label="Product Name"
+                  value={newProduct.name}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="description"
+                  label="Description"
+                  multiline
+                  rows={3}
+                  value={newProduct.description}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="price"
+                  label="Price"
+                  type="number"
+                  value={newProduct.price}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="stock"
+                  label="Stock"
+                  type="number"
+                  value={newProduct.stock}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="imageUrl"
+                  label="Image URL"
+                  value={newProduct.imageUrl}
+                  onChange={handleInputChange}
+                />
+                <FormControl fullWidth margin="normal">
+                  <InputLabel id="category-label">Category</InputLabel>
+                  <Select
+                    labelId="category-label"
+                    name="categoryId"
+                    value={newProduct.categoryId}
+                    onChange={handleInputChange}
+                    label="Category"
+                  >
+                    {categories.map((category) => (
+                      <MenuItem key={category.id} value={category.id}>
+                        {category.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                >
+                  Add Product
+                </Button>
+              </form>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Paper sx={{ p: 3 }}>
+              <Typography variant="h6" gutterBottom>
+                Your Products
+              </Typography>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Price</TableCell>
+                      <TableCell>Stock</TableCell>
+                      <TableCell>Actions</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {products.map((product) => (
+                      <TableRow key={product.id}>
+                        <TableCell>{product.name}</TableCell>
+                        <TableCell>${product.price}</TableCell>
+                        <TableCell>{product.stock}</TableCell>
+                        <TableCell>
+                          <Button
+                            size="small"
+                            variant="outlined"
+                            onClick={() =>
+                              handleUpdateProduct(product.id, {
+                                ...product,
+                                stock: product.stock + 1,
+                              })
+                            }
+                          >
+                            Increase Stock
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
 };
 
