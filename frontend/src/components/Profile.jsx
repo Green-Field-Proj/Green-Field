@@ -321,7 +321,7 @@ function Profile() {
         </Box>
       </Box>
 
-      {/* Snackbar for success and error messages */}
+
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}

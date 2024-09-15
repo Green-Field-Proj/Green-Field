@@ -12,7 +12,7 @@ function Home() {
   return (
     <div>
       <HeroSection />
-      <hr className="divider" />
+     
       <FlashSales />
       <hr className="divider" />
       <BrowseByCategory />

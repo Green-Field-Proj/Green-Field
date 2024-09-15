@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
+       
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
           <p>&copy; Copyright Rimel 2022. All right reserved</p>
         </div>

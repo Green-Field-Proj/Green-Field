@@ -58,7 +58,8 @@ function SignUp() {
         navigate("/login");
       }, 2000);
     } catch (error) {
-      setErrorMessage(error.response.data.message);
+      console.log(error.message)
+      setErrorMessage(error.message);
       setSuccessMessage("");
     }
   };
