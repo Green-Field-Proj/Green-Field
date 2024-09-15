@@ -160,7 +160,13 @@ module.exports = {
   },
   updateUser: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.user;
+      console.log(
+        req.body,
+        id,
+        "==============================AAAAAAAAAAAAAAAAAAAAAAAA==========================="
+      );
+
       const updated = await User.update(req.body, { where: { id } });
       if (updated) {
         const uptodate = await User.findByPk(id);
@@ -174,7 +180,7 @@ module.exports = {
   },
   deleteUser: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.user;
       const deleted = await User.destroy({ where: { id: id } });
       if (deleted) {
         res.status(200).send(" deleted successfully");

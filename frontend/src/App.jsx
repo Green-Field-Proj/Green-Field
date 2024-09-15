@@ -19,6 +19,9 @@ import SellerDashboard from "./components/SellerDashboard.jsx";
 import { loadCart, syncCart } from "./features/Cartslice.js";
 import Cart from "./components/Cart.jsx";
 import ProductDetails from "./components/OneProduct.jsx";
+import Checkout from "./components/Checkout.jsx";
+import PaymentSuccess from "./components/Homepage/PaymentSuccess.jsx";
+import PaymentFailure from "./components/Homepage/PaymentFailure.jsx";
 
 const App = () => {
   const { role } = useSelector((state) => state.auth);
@@ -48,6 +51,9 @@ const App = () => {
           <Route path="/seller" element={<SellerDashboard />} />
         )}
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-failure" element={<PaymentFailure />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -30,9 +30,12 @@ module.exports = {
     }
   },
   AddProduct: async (req, res) => {
+    const id = req.user.id;
     try {
       const newProduct = req.body;
-      const product = await Product.create(newProduct);
+      const product = await Product.create({ ...newProduct, userId: id });
+      console.log("created product ", product);
+
       res.status(200).send(product);
     } catch (error) {
       console.error(error);

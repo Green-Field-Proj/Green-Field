@@ -14,7 +14,7 @@ const {
 } = require("../controllers/product.controller");
 
 ProductsRouter.get("/getAll", getAllProducts);
-ProductsRouter.post("/add", AddProduct);
+ProductsRouter.post("/add", authenticate, AddProduct);
 ProductsRouter.get("/byId/:id", getProductById);
 ProductsRouter.get("/byName/:name", getProductByName);
 ProductsRouter.put("/:id", updateProduct);
