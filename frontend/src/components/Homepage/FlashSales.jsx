@@ -13,6 +13,8 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
+import { Link } from "react-router-dom";
+
 function FlashSales() {
   const dispatch = useDispatch();
   const [timeLeft, setTimeLeft] = useState({
@@ -110,21 +112,26 @@ function FlashSales() {
               className="flashCard"
             >
               <Box sx={{ position: "relative", height: 350, width: 270 }}>
-                <CardMedia
-                  component="img"
-                  height="194"
-                  image={product.imageUrl}
-                  alt={product.name}
-                  sx={{
-                    backgroundColor: "grey",
-                    objectFit: "cover",
-                    width: "100%",
-                    height: "100%",
-                    display: "block",
-                    marginLeft: 5,
-                    marginTop: 5,
-                  }}
-                />
+                <Link
+                  to={`/product/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={product.imageUrl}
+                    alt={product.name}
+                    sx={{
+                      backgroundColor: "grey",
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                      display: "block",
+                      marginLeft: 5,
+                      marginTop: 5,
+                    }}
+                  />
+                </Link>
                 <Box
                   sx={{
                     position: "absolute",

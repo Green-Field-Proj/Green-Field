@@ -48,13 +48,21 @@ module.exports = {
         include: [
           { model: Category, as: "category" },
           { model: User, as: "user" },
-          { model: Review, as: "reviews" },
-          { model: Order, as: "orders" },
-          { model: Cart, as: "carts" },
+          {
+            model: Review,
+            as: "reviews",
+            include: [
+              { model: User, as: "user", attributes: ["id", "username"] },
+            ],
+          },
         ],
       });
       if (product) {
-        res.status(200).send(product);
+        const parsedProduct = {
+          ...product.toJSON(),
+          price: parseFloat(product.price),
+        };
+        res.status(200).send(parsedProduct);
       } else {
         res.status(404).send("product not found");
       }
@@ -125,6 +133,47 @@ module.exports = {
         order: [["discount", "DESC"]],
       });
       const parsedProducts = flashSaleProducts.map((product) => ({
+        ...product.toJSON(),
+        price: parseFloat(product.price),
+      }));
+      res.status(200).send(parsedProducts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal server error");
+    }
+  },
+  searchProducts: async (req, res) => {
+    try {
+      const { q } = req.query;
+      const products = await Product.findAll({
+        where: {
+          name: {
+            [Op.like]: `%${q}%`,
+          },
+        },
+        limit: 5,
+      });
+      const parsedProducts = products.map((product) => ({
+        ...product.toJSON(),
+        price: parseFloat(product.price),
+      }));
+      res.status(200).json(parsedProducts);
+    } catch (error) {
+      console.error("Error searching products:", error);
+      res.status(500).send("Internal server error");
+    }
+  },
+  getSellerProducts: async (req, res) => {
+    console.log(req.user, "req.user =========================>");
+    try {
+      const products = await Product.findAll({
+        where: { userId: req.user.id },
+        include: [
+          { model: Category, as: "category" },
+          { model: Review, as: "reviews" },
+        ],
+      });
+      const parsedProducts = products.map((product) => ({
         ...product.toJSON(),
         price: parseFloat(product.price),
       }));

@@ -7,7 +7,8 @@ const {
   getOrderById,
   updateOrder,
   deleteOrder,
-               } = require("../controllers/order.controller");
+  getSellerEarnings,
+} = require("../controllers/order.controller");
 
 orderRoutes.post("/add", addOrder);
 orderRoutes.get("/getAll", getAllOrders);

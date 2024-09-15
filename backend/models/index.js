@@ -14,8 +14,8 @@ User.hasMany(Review, { as: "reviews", foreignKey: "userId" });
 Review.belongsTo(User, { as: "user", foreignKey: "userId" });
 
 // User <--> Product
-User.hasMany(Product, { as: "products", foreignKey: "userId" });
-Product.belongsTo(User, { as: "user", foreignKey: "userId" });
+User.hasMany(Product, { as: "products", foreignKey: "userId", required: true });
+Product.belongsTo(User, { as: "user", foreignKey: "userId", required: true });
 
 // Product <--> Review
 Product.hasMany(Review, { as: "reviews", foreignKey: "productId" });
@@ -26,8 +26,8 @@ Product.belongsTo(Category, { as: "category", foreignKey: "categoryId" });
 Category.hasMany(Product, { as: "products", foreignKey: "categoryId" });
 
 // User <--> Order
-User.hasMany(Order, { as: "orders", foreignKey: "userId" });
-Order.belongsTo(User, { as: "client", foreignKey: "userId" });
+User.hasMany(Order, { as: "orders", foreignKey: "userId", required: true });
+Order.belongsTo(User, { as: "client", foreignKey: "userId", required: true });
 
 // Order <--> Product (Many-to-Many)
 Order.belongsToMany(Product, {
@@ -42,8 +42,8 @@ Product.belongsToMany(Order, {
 });
 
 // User <--> Cart
-User.hasMany(Cart, { as: "carts", foreignKey: "userId" });
-Cart.belongsTo(User, { as: "client", foreignKey: "userId" });
+User.hasMany(Cart, { as: "carts", foreignKey: "userId", required: true });
+Cart.belongsTo(User, { as: "client", foreignKey: "userId", required: true });
 
 // Product <--> Cart
 Product.hasMany(Cart, { as: "carts", foreignKey: "productId" });

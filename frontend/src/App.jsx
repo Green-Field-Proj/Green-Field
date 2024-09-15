@@ -18,6 +18,7 @@ import { checkStatus } from "./features/AuthSlice.js";
 import SellerDashboard from "./components/SellerDashboard.jsx";
 import { loadCart, syncCart } from "./features/Cartslice.js";
 import Cart from "./components/Cart.jsx";
+import ProductDetails from "./components/OneProduct.jsx";
 
 const App = () => {
   const { role } = useSelector((state) => state.auth);
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/seller" element={<SellerDashboard />} />
         )}
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
