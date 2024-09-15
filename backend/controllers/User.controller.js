@@ -45,6 +45,13 @@ module.exports = {
       const result = await uploadStream(req.file.buffer);
       console.log(result.secure_url);
       const hashedPassword = await bcrypt.hash(password, saltRounds);
+      console.log({
+        username,
+        email,
+        password: hashedPassword,
+        role,
+        profileImage: result.secure_url,
+      })
       await User.create({
         username,
         email,

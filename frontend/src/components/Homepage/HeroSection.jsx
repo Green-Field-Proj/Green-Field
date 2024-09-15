@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import HeroCategories from "./HeroCategories";
 function HeroSection() {
   var settings = {
     dots: true,
@@ -21,6 +21,10 @@ function HeroSection() {
   ];
 
   return (
+    <div>
+    <div>
+      <HeroCategories />
+    </div>
     <div className="slider-wrapper">
       <div className="slider-container">
         <Slider {...settings}>
@@ -32,6 +36,7 @@ function HeroSection() {
         </Slider>
       </div>
     </div>
+    </div>  
   );
 }
 

@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../features/Cartslice";
+import { useNavigate } from "react-router-dom";
 
 const PaymentSuccess = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(clearCart());
@@ -22,7 +24,9 @@ const PaymentSuccess = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/");
+          }}
         >
           Return to Homepage
         </Button>

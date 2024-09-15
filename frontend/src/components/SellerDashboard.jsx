@@ -126,7 +126,7 @@ const SellerDashboard = () => {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className="sellerDashboard">
       <Box sx={{ mt: 4, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
           Seller Dashboard
@@ -145,6 +145,12 @@ const SellerDashboard = () => {
                   label="Product Name"
                   value={newProduct.name}
                   onChange={handleInputChange}
+                  InputProps={{
+                    style: {
+                      height: '60px',
+                    }
+                  }}
+                  
                 />
                 <TextField
                   fullWidth
@@ -181,6 +187,11 @@ const SellerDashboard = () => {
                   label="Image URL"
                   value={newProduct.imageUrl}
                   onChange={handleInputChange}
+                  InputProps={{
+                    style: {
+                      height: '60px',
+                    }
+                  }}
                 />
                 <FormControl fullWidth margin="normal">
                   <InputLabel id="category-label">Category</InputLabel>

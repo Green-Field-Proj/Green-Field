@@ -13,11 +13,17 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
+import  {Snackbar, Alert}  from "@mui/material";
 import { Link } from "react-router-dom";
 
 function BestSellingProducts() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+
+  
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   useEffect(() => {
     fetchProducts();
@@ -33,6 +39,26 @@ function BestSellingProducts() {
       console.error("Error fetching products:", error);
     }
   };
+
+  
+  const handleAddToCart = async (product) => {
+    try {
+      await dispatch(addToCart(product));
+      setSnackbarMessage("Product added to cart successfully");
+      setSnackbarSeverity("success");
+    } catch (error) {
+      setSnackbarMessage(error.message || "Failed to add product to cart");
+      setSnackbarSeverity("error");
+    } finally {
+       setOpenSnackbar(true);
+    }
+  };
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
+  
 
   return (
     <div className="best-selling-products">
@@ -150,7 +176,7 @@ function BestSellingProducts() {
                         opacity: 1,
                       },
                     }}
-                    onClick={() => dispatch(addToCart(product))}
+                    onClick={() => dispatch(handleAddToCart(product))}
                   >
                     <Typography variant="h6">Add to Cart</Typography>
                   </Box>
@@ -183,6 +209,19 @@ function BestSellingProducts() {
                   />
                 </CardContent>
               </Card>
+              <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbarSeverity}
+          sx={{ width: '100%' }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
             </div>
           );
         })}

@@ -1,4 +1,4 @@
-/* Global styles */
+
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -12,12 +12,32 @@ body {
   padding: 0 20px;
 }
 
-/* TopHeader styles */
+
 .top-header {
   background-color: #000;
   color: #fff;
   text-align: center;
   padding: 10px 0;
+}
+
+.hero-categories{
+  position: absolute;
+
+  margin-top: 20px;
+  width: Hug (217px)px;height: Hug (344px)px;top: 182px;left: 135px;gap: 16px;opacity: 0px;
+}
+.hero-categories p{
+  
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+
+}
+
+.sellerDashboard{
+  margin-bottom: 100px;
 }
 
 .new-arrivals-heading {
@@ -34,7 +54,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  background-color: #fff; /* Or whatever background color you prefer */
+  background-color: #fff;
   position: relative;
 }
 
@@ -53,16 +73,16 @@ body {
 
 .wishlist-icon-container,
 .cart-icon-container {
-  position: relative; /* Allows for precise positioning */
-  top: -5px; /* Adjust this value to raise the icons */
+  position: relative; 
+  top: -5px; 
 }
 
 .avatar-container {
-  position: relative; /* Allows for precise positioning */
-  top: -10px; /* Adjust this value to raise the avatar */
+  position: relative; 
+  top: -10px; 
 }
 
-/* Navbar styles */
+
 nav {
   background-color: white;
   padding: 15px;
@@ -72,8 +92,8 @@ nav {
   align-items: center;
   height: 40px;
 
-  gap: 15px; /* Space between links, search bar, and icon */
-  flex-wrap: wrap; /* Wrap items on smaller screens if needed */
+  gap: 15px; 
+  flex-wrap: wrap; 
 }
 
 nav .logo {
@@ -101,7 +121,7 @@ nav a:hover {
   color: blue;
 }
 
-/* Login and SignUp form styles */
+
 
 .full-signup {
   display: flex;
@@ -202,7 +222,7 @@ input[type="password"] {
   background-color: #971f20;
 }
 
-/* Footer styles */
+
 footer {
   background-color: #000;
   color: #fff;
@@ -310,7 +330,7 @@ footer .copyright {
   }
 }
 
-/* Home page styles */
+
 .home-container {
   text-align: center;
   padding: 40px 0;
@@ -321,7 +341,7 @@ footer .copyright {
   margin-bottom: 20px;
 }
 
-/* Message styles */
+
 .message {
   padding: 10px;
   border-radius: 4px;
@@ -359,15 +379,15 @@ footer .copyright {
   }
 
   .image-container {
-    max-width: 90%; /* Adjust image size for tablets */
+    max-width: 90%; 
   }
 
   .signup-container {
-    max-width: 90%; /* Adjust form width for tablets */
+    max-width: 90%; 
   }
 }
 
-/* Medium screens and tablets */
+
 @media (max-width: 768px) {
   .full-signup {
     flex-direction: column;
@@ -375,27 +395,27 @@ footer .copyright {
   }
 
   .image-container {
-    max-width: 100%; /* Full width on smaller screens */
+    max-width: 100%; 
   }
 
   .signup-container {
-    max-width: 95%; /* Adjust form width for medium screens */
+    max-width: 95%; 
   }
 
   .signup-container h2 {
-    font-size: 2rem; /* Adjust font size for medium screens */
+    font-size: 2rem; 
   }
 
   .signup-container h3 {
-    font-size: 1rem; /* Adjust font size for medium screens */
+    font-size: 1rem; 
   }
 
   .signup-container button[type="submit"] {
-    font-size: 0.9rem; /* Adjust font size for medium screens */
+    font-size: 0.9rem; 
   }
 }
 
-/* Small screens and mobile phones */
+
 @media (max-width: 480px) {
   .full-signup {
     flex-direction: column;
@@ -403,24 +423,24 @@ footer .copyright {
   }
 
   .image-container {
-    max-width: 100%; /* Full width on small screens */
+    max-width: 100%; 
   }
 
   .signup-container {
-    max-width: 100%; /* Full width on small screens */
-    padding: 10px; /* Reduce padding for small screens */
+    max-width: 100%; 
+    padding: 10px; 
   }
 
   .signup-container h2 {
-    font-size: 1.5rem; /* Adjust font size for small screens */
+    font-size: 1.5rem; 
   }
 
   .signup-container h3 {
-    font-size: 0.9rem; /* Adjust font size for small screens */
+    font-size: 0.9rem; 
   }
 
   .signup-container button[type="submit"] {
-    font-size: 0.8rem; /* Adjust font size for small screens */
+    font-size: 0.8rem; 
   }
 }
 
@@ -586,7 +606,7 @@ footer .copyright {
   font-family: "Poppins", "sans-serif";
   width: 215px;
   border-radius: 4px;
-  height: 50px;
+  height: 40px;
   font-weight: 500;
   line-height: 24px;
   margin-left: 570px;
@@ -820,35 +840,35 @@ footer .copyright {
   margin-left: 370px;
   margin-top: 30px;
   display: flex;
-  justify-content: center; /* Center the slider horizontally */
-  align-items: center; /* Center the slider vertically if needed */
-  width: 70%; /* Full width of the parent container */
-  height: 100%; /* Full height of the parent container */
-  padding: 20px; /* Optional padding */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  justify-content: center; 
+  align-items: center; 
+  width: 70%; 
+  height: 100%; 
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 
 .slider-container {
-  position: relative; /* Allows for absolute positioning of child elements */
-  width: 87%; /* Responsive width of the slider container */
-  height: 500px; /* Fixed height for the slider container */
-  overflow: hidden; /* Hide overflow content */
-  margin-left: 100px; /* Optional margin for positioning */
+  position: relative; 
+  width: 87%; 
+  height: 500px; 
+  overflow: hidden; 
+  margin-left: 100px; 
 }
 
 .slider-slide {
-  height: 390px; /* Full height of the slider container */
-  display: flex; /* Flexbox to center the content */
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
+  height: 390px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .slider-img {
   top: 0;
   left: 0;
-  width: 100%; /* Cover the full width of the container */
-  height: 100%; /* Cover the full height of the container */
-  display: block; /* Remove default inline spacing */
+  width: 100%; 
+  height: 100%; 
+  display: block; 
 }
 
 .todays {
@@ -969,7 +989,7 @@ footer .copyright {
   width: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-right: -50px;
-  position: relative; /* Required for absolute positioning of overlay */
+  position: relative; 
 }
 
 .flashCard .overlay {
@@ -984,7 +1004,7 @@ footer .copyright {
 }
 
 .flashCard:hover .overlay {
-  opacity: 1; /* Show overlay on hover */
+  opacity: 1; 
   cursor: pointer;
 }
 
@@ -1000,13 +1020,13 @@ footer .copyright {
 }
 
 .flash-button {
-  text-align: center; /* Center content horizontally */
+  text-align: center; 
   margin-top: 50px;
 }
 
 .divider {
   border: 0;
-  border-top: 1px solid grey; /* Light grey color */
+  border-top: 1px solid grey; 
   width: 87%;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -1108,7 +1128,7 @@ footer .copyright {
 }
 
 .product-card:hover .overlay {
-  opacity: 1; /* Show overlay on hover */
+  opacity: 1; 
   cursor: pointer;
 }
 
@@ -1147,15 +1167,15 @@ footer .copyright {
 }
 
 .promo-banner {
-  position: relative; /* Allows absolute positioning of child elements */
-  height: 400px; /* Fixed height for the banner */
-  width: 87%; /* Responsive width */
-  overflow: hidden; /* Hide any overflow */
+  position: relative; 
+  height: 400px; 
+  width: 87%; 
+  overflow: hidden; 
   margin-left: 100px;
 }
 
 .promo-image img {
-  position: absolute; /* Position image absolutely within the container */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
@@ -1168,11 +1188,11 @@ footer .copyright {
   position: absolute;
   top: 45%;
   left: 20%;
-  transform: translate(-50%, -50%); /* Center content */
+  transform: translate(-50%, -50%); 
   color: white;
   text-align: left;
   padding: 20px;
-  border-radius: 8px; /* Optional: rounded corners */
+  border-radius: 8px; 
 }
 
 .promo-categories {
@@ -1215,7 +1235,7 @@ footer .copyright {
 .promo-content button:hover {
   background-color: #00cc52;
 }
-/* Container for the grid of arrival items */
+
 .arrivals-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1224,7 +1244,7 @@ footer .copyright {
   margin-right: 100px;
 }
 
-/* Each arrival item container */
+
 .arrival-item {
   position: relative;
   overflow: hidden;
@@ -1234,42 +1254,42 @@ footer .copyright {
   box-sizing: border-box;
 }
 .arrival-image {
-  width: 100%; /* Ensure the image takes full width of its container */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Cover the container without distortion */
-  display: block; /* Block display to prevent inline spacing issues */
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+  display: block; 
 }
 
-/* Container for tall image */
+
 .tall-image-container {
   width: 100%;
 }
 
-/* Container for wide image */
+
 .wide-image-container {
   width: 100%;
 }
 
-/* Styling for tall images */
+
 .tall-image {
-  height: 600px; /* Fixed height for tall images */
-  width: auto; /* Width adjusts automatically */
+  height: 600px; 
+  width: auto; 
   object-fit: inherit;
 }
 
-/* Styling for wide images */
+
 .wide-image {
-  height: 300px; /* Adjust this height as needed */
+  height: 300px; 
   width: 100%;
   object-fit: inherit;
 }
 
-/* Container for custom height images, placed under the wide image */
+
 .custom-height-container {
-  margin-top: 20px; /* Space above the custom height images */
+  margin-top: 20px; 
 }
 
-/* Styling for square images */
+
 .square-image-container {
   margin-top: -285px;
   margin-left: 470px;
@@ -1277,18 +1297,18 @@ footer .copyright {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 100%;
-  height: 284px; /* Fixed height for square images */
+  height: 284px; 
   box-sizing: border-box;
 }
 
-/* Specific styling for custom height images */
+
 .custom-height {
-  height: 100%; /* Full height of the container */
-  width: 100%; /* Full width of the container */
+  height: 100%; 
+  width: 100%; 
   object-fit: inherit;
 }
 
-/* Overlay text styling */
+
 .arrival-text {
   position: absolute;
   bottom: 10px;
@@ -1303,16 +1323,16 @@ footer .copyright {
     0,
     0,
     0.5
-  ); /* Semi-transparent background for text visibility */
+  ); 
 }
 
-/* Title styling */
+
 .arrival-title {
   margin: 0;
   font-size: 1.5em;
 }
 
-/* Shop Now link styling */
+
 .arrival-link {
   display: inline-block;
   margin-top: 8px;
