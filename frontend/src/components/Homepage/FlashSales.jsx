@@ -13,6 +13,8 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
+import {Snackbar} from "@mui/material";
+import {Alert} from "@mui/material";
 import { Link } from "react-router-dom";
 
 function FlashSales() {
@@ -24,6 +26,10 @@ function FlashSales() {
     seconds: 0,
   });
   const [flashSaleProducts, setFlashSaleProducts] = useState([]);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
 
   useEffect(() => {
     const countDownDate = new Date("2024-09-18T23:59:59").getTime();
@@ -57,11 +63,30 @@ function FlashSales() {
       const response = await axios.get(
         "http://localhost:3000/api/product/flash-sale"
       );
+      
       setFlashSaleProducts(response.data);
     } catch (error) {
       console.error("Error fetching flash sale products:", error);
     }
   };
+
+  const handleAddToCart = async (product) => {
+    try {
+      await dispatch(addToCart(product));
+      setSnackbarMessage("Product added to cart successfully");
+      setSnackbarSeverity("success");
+    } catch (error) {
+      setSnackbarMessage(error.message || "Failed to add product to cart");
+      setSnackbarSeverity("error");
+    } finally {
+       setOpenSnackbar(true);
+    }
+  };
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
 
   return (
     <div className="flash-sales">
@@ -211,7 +236,7 @@ function FlashSales() {
                       opacity: 1,
                     },
                   }}
-                  onClick={() => dispatch(addToCart(product))}
+                  onClick={() => dispatch(handleAddToCart(product))}
                 >
                   <Typography variant="h6">Add to Cart</Typography>
                 </Box>
@@ -244,6 +269,19 @@ function FlashSales() {
                 />
               </CardContent>
             </Card>
+             <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbarSeverity}
+          sx={{ width: '100%' }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
           </div>
         ))}
       </div>

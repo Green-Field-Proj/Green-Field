@@ -20,7 +20,7 @@ const PaymentFailure = () => {
         to="/checkout"
         variant="contained"
         color="primary"
-        onClick={navigate("/checkout")}
+        onClick={()=>{navigate("/checkout")}}
       >
         Return to Checkout
       </Button>

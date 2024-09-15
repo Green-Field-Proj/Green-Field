@@ -51,13 +51,14 @@ const SendMessage = () => {
               fullWidth
               InputProps={{
                 style: {
-                  height: "50px",
+                  height: "60px",
                   width: "235px",
                 },
               }}
               InputLabelProps={{
                 style: {
-                  lineHeight: "50px",
+                  
+                  lineHeight: "17px",
                 },
               }}
               value={data.name}
@@ -73,13 +74,14 @@ const SendMessage = () => {
               fullWidth
               InputProps={{
                 style: {
-                  height: "50px",
+                  height: "60px",
                   width: "235px",
                 },
               }}
               InputLabelProps={{
                 style: {
-                  lineHeight: "50px",
+                  
+                  lineHeight: "17px",
                 },
               }}
               value={data.email}
@@ -95,13 +97,14 @@ const SendMessage = () => {
               fullWidth
               InputProps={{
                 style: {
-                  height: "50px",
+                  height: "60px",
                   width: "235px",
                 },
               }}
               InputLabelProps={{
                 style: {
-                  lineHeight: "50px",
+                  
+                  lineHeight: "17px",
                 },
               }}
               value={data.subject}
