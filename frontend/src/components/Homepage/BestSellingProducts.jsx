@@ -13,14 +13,14 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
-import  {Snackbar, Alert}  from "@mui/material";
-import { Link } from "react-router-dom";
+import { Snackbar, Alert } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 
 function BestSellingProducts() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
-  
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
@@ -40,7 +40,6 @@ function BestSellingProducts() {
     }
   };
 
-  
   const handleAddToCart = async (product) => {
     try {
       await dispatch(addToCart(product));
@@ -50,15 +49,13 @@ function BestSellingProducts() {
       setSnackbarMessage(error.message || "Failed to add product to cart");
       setSnackbarSeverity("error");
     } finally {
-       setOpenSnackbar(true);
+      setOpenSnackbar(true);
     }
   };
 
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
   };
-
-  
 
   return (
     <div className="best-selling-products">
@@ -72,6 +69,7 @@ function BestSellingProducts() {
           variant="contained"
           disableElevation
           id="viewAllSellingProducts"
+          onClick={() => navigate("/products")}
         >
           View All
         </Button>
@@ -210,18 +208,18 @@ function BestSellingProducts() {
                 </CardContent>
               </Card>
               <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: '100%' }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+              >
+                <Alert
+                  onClose={handleSnackbarClose}
+                  severity={snackbarSeverity}
+                  sx={{ width: "100%" }}
+                >
+                  {snackbarMessage}
+                </Alert>
+              </Snackbar>
             </div>
           );
         })}

@@ -22,6 +22,7 @@ import ProductDetails from "./components/OneProduct.jsx";
 import Checkout from "./components/Checkout.jsx";
 import PaymentSuccess from "./components/Homepage/PaymentSuccess.jsx";
 import PaymentFailure from "./components/Homepage/PaymentFailure.jsx";
+import ProductListing from "./components/ProductListing.jsx";
 
 const App = () => {
   const { role } = useSelector((state) => state.auth);
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/seller" element={<SellerDashboard />} />
         )}
         <Route path="/cart" element={<Cart />} />
+        <Route path="/products" element={<ProductListing />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />

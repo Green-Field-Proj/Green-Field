@@ -21,7 +21,7 @@ const SendMessage = () => {
 
     const formData = new FormData();
     Object.keys(data).forEach((key) => formData.append(key, data[key]));
-    formData.append("access_key", "438aef67-5feb-48b3-a4c8-3d290f8be159");
+    formData.append("access_key", "b7ab18b3-6670-4af5-a876-80fd135d52ae");
 
     try {
       const response = await axios.post(
