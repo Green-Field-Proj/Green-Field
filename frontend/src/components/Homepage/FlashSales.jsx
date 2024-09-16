@@ -13,12 +13,13 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
-import {Snackbar} from "@mui/material";
-import {Alert} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Snackbar } from "@mui/material";
+import { Alert } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 
 function FlashSales() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -63,7 +64,7 @@ function FlashSales() {
       const response = await axios.get(
         "http://localhost:3000/api/product/flash-sale"
       );
-      
+
       setFlashSaleProducts(response.data);
     } catch (error) {
       console.error("Error fetching flash sale products:", error);
@@ -79,14 +80,13 @@ function FlashSales() {
       setSnackbarMessage(error.message || "Failed to add product to cart");
       setSnackbarSeverity("error");
     } finally {
-       setOpenSnackbar(true);
+      setOpenSnackbar(true);
     }
   };
 
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
   };
-
 
   return (
     <div className="flash-sales">
@@ -269,24 +269,29 @@ function FlashSales() {
                 />
               </CardContent>
             </Card>
-             <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: '100%' }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={6000}
+              onClose={handleSnackbarClose}
+            >
+              <Alert
+                onClose={handleSnackbarClose}
+                severity={snackbarSeverity}
+                sx={{ width: "100%" }}
+              >
+                {snackbarMessage}
+              </Alert>
+            </Snackbar>
           </div>
         ))}
       </div>
       <div className="flash-button">
-        <Button variant="contained" disableElevation id="flash-btn">
+        <Button
+          variant="contained"
+          disableElevation
+          id="flash-btn"
+          onClick={() => navigate("/products")}
+        >
           View All Products
         </Button>
       </div>

@@ -1,11 +1,11 @@
 import React from "react";
-import qrcode from "../images/qrcode.webp"
-import appstore from "../images/appstore.png"
-import facebook from "../images/facebook.png"
-import googleplay from "../images/googleplay.webp"
-import instagram from "../images/instagram.png"
-import linkedin from "../images/linkedin.png"
-import twitter from "../images/twitter.png"
+import qrcode from "../images/qrcode.webp";
+import appstore from "../images/appstore.png";
+import facebook from "../images/facebook.png";
+import googleplay from "../images/googleplay.webp";
+import instagram from "../images/instagram.png";
+import linkedin from "../images/linkedin.png";
+import twitter from "../images/twitter.png";
 
 const Footer = () => {
   return (
@@ -72,52 +72,26 @@ const Footer = () => {
             <h3>Download App</h3>
             <p>Save $3 with App New User Only</p>
             <div className="app-stores">
-              <img
-                src={qrcode}
-                alt="QR Code"
-                className="w-24 h-24"
-              />
+              <img src={qrcode} alt="QR Code" className="w-24 h-24" />
               <div className="flex flex-col space-y-2">
-                <img
-                  src={googleplay}
-                  alt="Google Play"
-                  className="h-10"
-                />
-                <img
-                  src={appstore}
-                  alt="App Store"
-                  className="h-10"
-                />
+                <img src={googleplay} alt="Google Play" className="h-10" />
+                <img src={appstore} alt="App Store" className="h-10" />
               </div>
             </div>
             <div className="social-icons">
-              <img
-                src={facebook}
-                alt="Facebook"
-                className="w-6 h-6"
-              />
-              <img
-                src={twitter}
-                alt="Twitter"
-                className="w-6 h-6"
-              />
-              <img
-                src={instagram}
-                alt="Instagram"
-                className="w-6 h-6"
-              />
-              <img
-                src={linkedin}
-                alt="LinkedIn"
-                className="w-6 h-6"
-              />
+              <img src={facebook} alt="Facebook" className="w-6 h-6" />
+              <img src={twitter} alt="Twitter" className="w-6 h-6" />
+              <img src={instagram} alt="Instagram" className="w-6 h-6" />
+              <img src={linkedin} alt="LinkedIn" className="w-6 h-6" />
             </div>
           </div>
         </div>
 
-       
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <p>&copy; Copyright Rimel 2022. All right reserved</p>
+          <p>
+            &copy; Copyright team ichah {new Date().getFullYear()} All right
+            reserved
+          </p>
         </div>
       </div>
     </footer>

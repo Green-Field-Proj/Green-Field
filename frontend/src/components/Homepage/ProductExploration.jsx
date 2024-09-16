@@ -13,18 +13,18 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/Cartslice";
-import  {Snackbar, Alert}  from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
 function ProductExploration() {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,7 +50,7 @@ function ProductExploration() {
       setSnackbarMessage(error.message || "Failed to add product to cart");
       setSnackbarSeverity("error");
     } finally {
-       setOpenSnackbar(true);
+      setOpenSnackbar(true);
     }
   };
 
@@ -58,7 +58,6 @@ function ProductExploration() {
     setOpenSnackbar(false);
   };
 
-  
   return (
     <div className="best-selling-products">
       <div className="todays">
@@ -202,24 +201,29 @@ function ProductExploration() {
                 </CardContent>
               </Card>
               <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: '100%' }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+              >
+                <Alert
+                  onClose={handleSnackbarClose}
+                  severity={snackbarSeverity}
+                  sx={{ width: "100%" }}
+                >
+                  {snackbarMessage}
+                </Alert>
+              </Snackbar>
             </div>
           );
         })}
       </div>
       <div className="flash-button">
-        <Button variant="contained" disableElevation id="flash-btn">
+        <Button
+          variant="contained"
+          disableElevation
+          id="flash-btn"
+          onClick={() => navigate("/products")}
+        >
           View All Products
         </Button>
       </div>

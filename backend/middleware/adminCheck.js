@@ -4,6 +4,8 @@ require("dotenv").config();
 // MiddleWare Here we will need auth for now
 
 const adminCheck = (req, res, next) => {
+  console.log(req.cookies);
+  console.log("adminCheck", req.cookies.token);
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });

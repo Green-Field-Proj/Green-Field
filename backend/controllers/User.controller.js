@@ -51,7 +51,7 @@ module.exports = {
         password: hashedPassword,
         role,
         profileImage: result.secure_url,
-      })
+      });
       await User.create({
         username,
         email,
@@ -185,19 +185,7 @@ module.exports = {
       res.status(500).send("Internal server error");
     }
   },
-  deleteUser: async (req, res) => {
-    try {
-      const { id } = req.user;
-      const deleted = await User.destroy({ where: { id: id } });
-      if (deleted) {
-        res.status(200).send(" deleted successfully");
-      } else {
-        res.status(404).send("not found");
-      }
-    } catch (error) {
-      res.status(500).send("Internal server error");
-    }
-  },
+
   checkStatus: async (req, res) => {
     const id = req.user.id;
 
@@ -214,6 +202,26 @@ module.exports = {
       console.log("Logged out successfully");
     } catch (error) {
       res.status(500).json({ message: error.message });
+    }
+  },
+  adminupdateuser: async (req, res) => {
+    console.log("reaached here ?????,");
+    try {
+      const { id } = req.params;
+      const updatedUser = req.body;
+      const user = await User.update(updatedUser, { where: { id } });
+      res.status(200).send(user);
+    } catch (error) {
+      res.status(500).send("Internal server error");
+    }
+  },
+  adminDeleteUser: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.destroy({ where: { id } });
+      res.status(200).send("User deleted successfully");
+    } catch (error) {
+      res.status(500).send("Internal server error");
     }
   },
 };

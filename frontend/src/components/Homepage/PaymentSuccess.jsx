@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
-import { Typography, Box , Button} from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../features/Cartslice";
 import { useNavigate } from "react-router-dom";
 
-
 const PaymentSuccess = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   useEffect(() => {
     dispatch(clearCart());
@@ -23,7 +21,13 @@ const PaymentSuccess = () => {
       </Typography>
       <Typography variant="body1">
         Thank you for your purchase. Your order has been placed successfully.
-        <Button variant="contained" color="primary" onClick={()=>{navigate("/")}}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           Return to Homepage
         </Button>
       </Typography>
