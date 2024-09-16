@@ -36,6 +36,6 @@ This is a comprehensive full-stack e-commerce application designed for managing 
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/Green-Field-Proj/Green-Field.git
-   cd mini-e-commerce-app
+   cd Green-Field
 
 
