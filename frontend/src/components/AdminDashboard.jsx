@@ -72,7 +72,13 @@ const AdminDashboard = () => {
 
   const handleUpdateUser = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/user/update`, selectedUser);
+      await axios.put(
+        `http://localhost:3000/api/user/adminupdateuser/${selectedUser.id}`,
+        selectedUser,
+        {
+          withCredentials: true,
+        }
+      );
       fetchData();
       setIsUserDialogOpen(false);
     } catch (error) {
@@ -84,7 +90,10 @@ const AdminDashboard = () => {
     try {
       await axios.put(
         `http://localhost:3000/api/product/${selectedProduct.id}`,
-        selectedProduct
+        selectedProduct,
+        {
+          withCredentials: true,
+        }
       );
       fetchData();
       setIsProductDialogOpen(false);
@@ -97,7 +106,10 @@ const AdminDashboard = () => {
     try {
       await axios.put(
         `http://localhost:3000/api/category/${selectedCategory.id}`,
-        selectedCategory
+        selectedCategory,
+        {
+          withCredentials: true,
+        }
       );
       fetchData();
       setIsCategoryDialogOpen(false);
@@ -108,8 +120,8 @@ const AdminDashboard = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/user/delete`, {
-        data: { id: userId },
+      await axios.delete(`http://localhost:3000/api/user/delete/${userId}`, {
+        withCredentials: true,
       });
       fetchData();
     } catch (error) {

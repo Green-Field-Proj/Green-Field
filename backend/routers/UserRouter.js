@@ -11,9 +11,10 @@ const {
   getUserById,
   getUserByName,
   updateUser,
-  deleteUser,
   checkStatus,
   userLogout,
+  adminDeleteUser,
+  adminupdateuser,
 } = require("../controllers/User.controller");
 
 UserRouter.post("/logout", userLogout);
@@ -24,6 +25,7 @@ UserRouter.get("/getAll", getAllUsers);
 UserRouter.get("/byId/:id", getUserById);
 UserRouter.get("/byName/:username", getUserByName);
 UserRouter.put("/update", authenticate, updateUser);
-UserRouter.delete("/delete", adminAuth, deleteUser);
+UserRouter.put("/adminupdateuser/:id", adminAuth, adminupdateuser);
+UserRouter.delete("/delete/:id", adminAuth, adminDeleteUser);
 
 module.exports = UserRouter;
